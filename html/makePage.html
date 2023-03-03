@@ -1,0 +1,190 @@
+<html>
+
+<head>
+    <title>StoryBook</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/makePage.css">
+</head>
+
+<body>
+    <div id="left-container">
+        <button id="finish-btn">Finish</button>
+        <button class="page-btn">Cover</button>
+        <button class="page-btn">page1</button>
+        <button id="addPage-btn" class="page-btn"><i class="fa fa-plus"></i></button>
+    </div>
+
+
+    <div id="right-container">
+        <p>Book cover</p>
+        <div>
+            <label for="bookName">Book name : </label>
+            <!--<input id="bookName">-->
+        </div>
+
+        <!--產出的圖片文字-->
+        <div id=storybook-content>
+
+            <div id="image-container">
+                <img id="image" src="" alt="">
+            </div>
+
+            <div id="text-container">
+                <p id="image_text"></p>
+            </div>
+
+
+        </div>
+
+        <!--產圖填寫表單-->
+        <form>
+            <div>
+                <P>Text narrative : </P>
+                <textarea id="text-prompt" rows="4" cols="52" placeholder="input text"></textarea>
+            </div>
+
+            <!--圖片形容-->
+            <div>
+                <p><b>Picture</b></p>
+                <div>
+                    <!--圖片風格-->
+                    <p>Picture style</p>
+                    <div>
+                        <input type="radio" id="Futurism" name="picture-style" value="Futurism">
+                        <label for="Futurism">Futurism</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="Pop-Art" name="picture-style" value="Pop Art">
+                        <label for="Pop-Art">Pop Art</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="Srrealism" name="picture-style" value="Surrealism">
+                        <label for="Srrealism">Srrealism</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="Orphism" name="picture-style" value="Orphism">
+                        <label for="Orphism">Orphism</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="Metaphysical-Painting" name="picture-style"
+                            value="Metaphysical Painting">
+                        <label for="Metaphysical-Painting">Metaphysical Painting</label>
+                    </div>
+                    <br><br>
+                </div>
+
+                <div>
+                    <!--角色在哪裡-->
+                    <label for="place">Where are roles : </label>
+                    <input type="text" id="place">
+                    <br><br>
+                </div>
+
+                <div>
+                    <div>
+                        <p>Role </p>
+                        <button id="addRole-btn"><i class="fa fa-plus"
+                                style="font-size:10px;color:rgb(34, 69, 149)"></i></button>
+                    </div>
+                    <!--角色形容-->
+                    <div>
+                        <p>Role 1</p>
+                        <div>
+                            <!--角色形種類-->
+                            <p>What kind of role : </p>
+                            <div>
+                                <input type="radio" id="Human" name="role-type" value="Human">
+                                <label for="Human">Human</label>
+
+                                <input type="radio" id="Animal" name="role-type" value="Animal">
+                                <label for="Animal">Animal</label> <input type="text" id="animal-type">
+
+                                <input type="radio" id="Other" name="role-type" value="Other">
+                                <label for="Other">Other</label> <input type="text" id="other-type">
+                            </div>
+
+                            <!--腳色性別-->
+                            <p>Biological sex : </p>
+                            <div>
+                                <input type="radio" id="sex-girl" name="sex" value="female">
+                                <label for="sex-girl">girl</label>
+
+                                <input type="radio" id="sex-boy" name="sex" value="male">
+                                <label for="sex-boy">boy</label>
+
+                            </div>
+                            <br>
+                            <!--角色年齡-->
+                            <label for="age">Age : </label>
+                            <input type="text" id="age">
+
+                            <br> <br>
+                            <!--角色心情-->
+                            <label for="mode">Mode : </label>
+                            <input type="text" id="mode">
+
+                            <br> <br>
+                            <!--角色動作-->
+                            <label for="action">Action : </label>
+                            <input type="text" id="action">
+
+                            <br> <br>
+                            <!--角色穿著-->
+                            <label for="wear">Wear : </label>
+                            <input type="text" id="wear">
+
+                            <br> <br>
+                            <!--角色性格-->
+                            <label for="personality">Personality : </label>
+                            <input type="text" id="personality">
+
+                            <br> <br>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--場景畫面形容-->
+                <div>
+                    <div>
+                        <p>Scene Object </p>
+                        <button id="sceneObject-addBtn"><i class="fa fa-plus"
+                                style="font-size:10px;color:rgb(34, 69, 149)"></i></button>
+                        <br> <br>
+
+                    </div>
+
+                    <div>
+                        <p>Object 1</p>
+
+                        <!--物件名稱-->
+                        <label for="object-name">Object name : </label>
+                        <input type="text" id="object-name">
+                        <br> <br>
+                        <!--物件顏色-->
+                        <label for="object-color">Object color : </label>
+                        <input type="text" id="object-color">
+                        <br> <br>
+                        <!--物件放哪-->
+                        <label for="object-place">Object place : </label>
+                        <input type="text" id="object-place">
+                        <br> <br>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script src="../js/makePage.js"></script>
+</body>
+
+</html>
