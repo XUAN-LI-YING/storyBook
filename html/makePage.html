@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -9,16 +10,19 @@
 <body>
     <div id="left-container">
         <button id="finish-btn">Finish</button>
-        <button class="page-btn">Cover</button>
-        <button class="page-btn">page1</button>
-        <button id="addPage-btn" class="page-btn"><i class="fa fa-plus"></i></button>
+        <div id="page_container">
+            <button class="page-btn">Cover</button>
+            <button class="page-btn">Page1</button>
+        </div>
+        <button id="addPage-btn"><i class="fa fa-plus"></i></button>
     </div>
 
 
     <div id="right-container">
-        <p>Book cover</p>
+        <p id="pageName">Cover</p>
         <div>
             <label for="bookName">Book name : </label>
+            <input type="text" id="bookName">
             <!--<input id="bookName">-->
         </div>
 
@@ -26,18 +30,18 @@
         <div id=storybook-content>
 
             <div id="image-container">
-                <img id="image" src="" alt="">
+                <img id="image" src="../picture/storyPicContainer3.png" alt="">
             </div>
 
             <div id="text-container">
-                <p id="image_text"></p>
+                <p id="image_text">Showing story picture and content soon.</p>
             </div>
 
 
         </div>
 
         <!--產圖填寫表單-->
-        <form>
+        <form id="allForm">
             <div>
                 <P>Text narrative : </P>
                 <textarea id="text-prompt" rows="4" cols="52" placeholder="input text"></textarea>
