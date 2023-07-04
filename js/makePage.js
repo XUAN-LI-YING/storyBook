@@ -1,8 +1,14 @@
-const startButton = document.getElementById('finish-btn');
+const startButton = document.getElementById('start-btn');
 //----控制故事書文字產生內容----//
 const Image_text = document.getElementById('image_text');
 //----控制故事書AI圖片產生內容----//
 const imgAI = document.getElementById('image');
+//抓取故事內文文字的輸入框
+const TextPrompt = document.getElementById('text-prompt');
+//抓住故事封底文字
+const text = document.getElementById('backCoverText');
+
+
 
 startButton.onclick = function () {
 
@@ -12,12 +18,23 @@ startButton.onclick = function () {
 
     //抓取使用者所填寫資料
     //抓取故事文字
-    const TextPrompt = document.getElementById('text-prompt').value;
-    console.log(TextPrompt);
+    //抓取現在頁面位置用來了解要抓取哪個文字value是封底的還是文字內頁
+    const pageName = document.getElementById('pageName');
+    const PromptValue = TextPrompt.value;
+    const textValue = text.value;
+    if (pageName.innerText == 'Cover') {
+
+        //所填入的書背文產生在故事書旁
+        Image_text.innerText = textValue
+    }
+    else {
+        //所填入的內文產生在故事書旁
+        Image_text.innerText = PromptValue;
+    }
 
 
-    //產生文字在故事書旁
-    Image_text.innerText = TextPrompt;
+
+
 
 
     //Get picture style
@@ -134,12 +151,12 @@ startButton.onclick = function () {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer 1234567..`,
+            'Authorization': `Bearer `,
         },
 
         body: JSON.stringify(data) //不太懂一定要有這行才能有res.json()
     }
-
+    
     const URL = "https://api.openai.com/v1/images/generations"
 
     fetch(URL, config)
@@ -175,6 +192,10 @@ function addImages(jsonData, prompt) {
         let imgData = jsonData.data[i];
         imgAI.src = imgData.url;
         imgAI.alt = prompt;
+
+
+
+
     }
 
 }
@@ -185,6 +206,15 @@ function addImages(jsonData, prompt) {
 //按下假的更換頁面
 let pageContain = document.querySelector("#page_container");
 const pageName = document.getElementById('pageName');
+const bookName_contain = document.getElementById('bookName_contain');
+const backCover_contain = document.getElementById('backCover_contain');
+const textPrompt_contain = document.getElementById('textPrompt_contain');
+const coverColor = document.getElementById('coverColor');
+const textBgColor = document.getElementById('textBgColor');
+const text_container = document.getElementById("text-container");
+
+
+
 
 //當按相同CLASS按鈕
 //冒泡機制，讓新增的物件也被監聽，父級別被監聽子級別也會
@@ -202,6 +232,7 @@ pageContain.addEventListener('click', (e) => {
         //將故事書圖片歸零#但之後須加後端抓取資料
         imgAI.src = "../picture/storyPicContainer3.png";
         imgAI.alt = "";
+        changePageInner();
         //---console.log--//
         console.log(e.target);
         console.log(e.target.nodeName);
@@ -211,6 +242,34 @@ pageContain.addEventListener('click', (e) => {
 
 });
 
+//更換頁面部分內容不同要隱藏以及顯示(在沒有切換btn的情況)
+
+
+const changePageInner = function () {
+    console.log(`pagename==${pageName.innerText}`);
+    if (pageName.innerText == "Cover") {
+        textPrompt_contain.style.display = "none";
+        textBgColor.style.display = "none";
+        coverColor.style.display = "block";
+        bookName_contain.style.display = "block";
+        backCover_contain.style.display = "block";
+        text_container.style.alignItems = "end"
+        Image_text.style.paddingBottom = "20px";
+        console.log("cover");
+    }
+    else {
+        textPrompt_contain.style.display = "block";
+        textBgColor.style.display = "block";
+        bookName_contain.style.display = "none";
+        backCover_contain.style.display = "none";
+        coverColor.style.display = "none";
+        text_container.style.alignItems = "center"
+        Image_text.style.paddingBottom = "0px";
+        console.log("any");
+
+    }
+}
+changePageInner();
 
 //-------新增Page
 //..增加PAGE按鈕onclick...
@@ -232,8 +291,43 @@ addPageButton.onclick = function () {
 }
 
 
+//更換背景顏色
+
+const bg_color = document.getElementsByClassName("bg_color");
+const colorSelect = document.getElementById("colorSelect");
+const image_text = document.getElementById("image_text");
+
+colorSelect.addEventListener('click', (e) => {
+
+    //並不是負級別裡的所有CSS感應到，而是僅限於class="bg_color"
+    if (e.target.classList.contains("bg_color")) {
+        const container_color = e.target.getAttribute('data-background');
+        const container_text = e.target.getAttribute('data-text');
+
+        text_container.style.background = container_color;
+        image_text.style.color = container_text;
+
+    }
+
+})
+
+//更換背景顏色之選項btn顏色
+console.log(bg_color);
+for (i = 0; i < bg_color.length; i++) {
+    bg_color[i].style.backgroundColor = bg_color[i].getAttribute('data-background')
+    bg_color[i].style.color = bg_color[i].getAttribute('data-text')
+
+}
 
 
+//reset 按鈕
 
+const reset_btn = document.getElementById('reset-btn');
 
+reset_btn.addEventListener('click', () => {
+    document.getElementById("allForm").reset();
 
+})
+
+//finish 按鈕
+const finish_btn = document.getElementById('finish-btn');

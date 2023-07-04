@@ -9,46 +9,129 @@
 
 <body>
     <div id="left-container">
-        <button id="finish-btn">Finish</button>
+        <button type="button" id="finish-btn" onclick="javascript:location.href='../html/finish.html'" value="storyBook">Finish</button>
         <div id="page_container">
-            <button class="page-btn">Cover</button>
-            <button class="page-btn">Page1</button>
+            <button type="button" class="page-btn">Cover</button>
+            <button type="button" class="page-btn">Page1</button>
         </div>
-        <button id="addPage-btn"><i class="fa fa-plus"></i></button>
+        <button type="button" id="addPage-btn"><i class="fa fa-plus"></i></button>
     </div>
 
 
     <div id="right-container">
-        <p id="pageName">Cover</p>
-        <div>
-            <label for="bookName">Book name : </label>
-            <input type="text" id="bookName">
-            <!--<input id="bookName">-->
-        </div>
+        <div id="top_right-container">
+            <p id="pageName">Cover</p>
 
-        <!--產出的圖片文字-->
-        <div id=storybook-content>
+            <!--產出的圖片文字-->
+            <div id=storybook-content>
 
-            <div id="image-container">
-                <img id="image" src="../picture/storyPicContainer3.png" alt="">
+                <div id="image-container">
+                    <img id="image" src="../picture/storyPicContainer3.png" alt="">
+                </div>
+
+                <div id="text-container">
+                    <p id="image_text">Showing story picture and content soon.</p>
+                </div>
+
+
             </div>
-
-            <div id="text-container">
-                <p id="image_text">Showing story picture and content soon.</p>
-            </div>
-
-
         </div>
-
         <!--產圖填寫表單-->
         <form id="allForm">
-            <div>
-                <P>Text narrative : </P>
-                <textarea id="text-prompt" rows="4" cols="52" placeholder="input text"></textarea>
+
+            <!-- 隨頁面不同改變 -->
+            <div id="chang_with_page">
+
+                <!-- 故事書名稱 -->
+                <div id="bookName_contain">
+                    <label for="bookName">Book name : </label>
+                    <br>
+                    <input type="text" id="bookName">
+                    <!--<input id="bookName">-->
+                </div>
+
+                <!-- 故事書書背文字 -->
+                <div id="backCover_contain">
+                    <label for="backCoverText">Back cover text :</label>
+                    <br>
+                    <input type="text" id="backCoverText">
+                    <!--<input id="bookName">-->
+                </div>
+
+                <!-- 圖片文字描述 -->
+                <div id="textPrompt_contain">
+                    <label for="text-prompt">Text narrative : </label>
+                    <br>
+                    <textarea id="text-prompt" rows="4" cols="52" placeholder="input text"></textarea>
+                </div>
+
+                <!-- cover顏色 -->
+                <div id="colorSelect">
+                    <div id="coverColor">
+                        <P>Back cover color :</P>
+                        <button type="button" id="red" class="bg_color" data-background="#AE3535"
+                            data-text="#FFFFFF">Red</button>
+
+                        <button type="button" id="orange" class="bg_color" data-background="#D98244"
+                            data-text="#FFFFFF">Orange</button>
+
+                        <button type="button" id="yellow" class="bg_color" data-background="#FFF500"
+                            data-text="#0B0508">Yellow</button>
+
+                        <button type="button" id="green" class="bg_color" data-background="#3C5431"
+                            data-text="#FFFFFF">Green</button>
+
+                        <button type="button" id="blue" class="bg_color" data-background="#305F97"
+                            data-text="#FFFFFF">Blue</button>
+
+                        <button type="button" id="purple" class="bg_color" data-background="#644C8C"
+                            data-text="#FFFFFF">Purple</button>
+
+                        <button type="button" id="pink" class="bg_color" data-background="#9A5E7B"
+                            data-text="#FFFFFF">Pink</button>
+
+                        <button type="button" id="white" class="bg_color" data-background="#FFFFFF"
+                            data-text="#0B0508">White</button>
+
+                        <button type="button" id="black" class="bg_color" data-background="#0B0508"
+                            data-text="#FFFFFF">Black</button>
+
+
+                    </div>
+
+                    <div id="textBgColor">
+                        <P>Text background color :</P>
+                        <button type="button" id="red" class="bg_color" data-background="#DE9D9D"
+                            data-text="#0B0508">Red</button>
+
+                        <button type="button" id="orange" class="bg_color" data-background="#E3BB9D"
+                            data-text="#0B0508">Orange</button>
+
+                        <button type="button" id="yellow" class="bg_color" data-background="#fff88e"
+                            data-text="#0B0508">Yellow</button>
+
+                        <button type="button" id="green" class="bg_color" data-background="#A6DCBB"
+                            data-text="#0B0508">Green</button>
+
+                        <button type="button" id="blue" class="bg_color" data-background="#A8D0FF"
+                            data-text="#0B0508">Blue</button>
+
+                        <button type="button" id="purple" class="bg_color" data-background="#CEBEE7"
+                            data-text="#0B0508">Purple</button>
+
+                        <button type="button" id="pink" class="bg_color" data-background="#DEBCCC"
+                            data-text="#0B0508">Pink</button>
+
+                        <button type="button" id="white" class="bg_color" data-background="#FFFFFF"
+                            data-text="#0B0508">White</button>
+
+
+                    </div>
+                </div>
             </div>
 
             <!--圖片形容-->
-            <div>
+            <div id="picture_container">
                 <p><b>Picture</b></p>
                 <div>
                     <!--圖片風格-->
@@ -84,6 +167,7 @@
                 <div>
                     <!--角色在哪裡-->
                     <label for="place">Where are roles : </label>
+                    <br>
                     <input type="text" id="place">
                     <br><br>
                 </div>
@@ -91,7 +175,7 @@
                 <div>
                     <div>
                         <p>Role </p>
-                        <button id="addRole-btn"><i class="fa fa-plus"
+                        <button type="button" id="addRole-btn"><i class="fa fa-plus"
                                 style="font-size:10px;color:rgb(34, 69, 149)"></i></button>
                     </div>
                     <!--角色形容-->
@@ -157,7 +241,7 @@
                 <div>
                     <div>
                         <p>Scene Object </p>
-                        <button id="sceneObject-addBtn"><i class="fa fa-plus"
+                        <button type="button" id="sceneObject-addBtn"><i class="fa fa-plus"
                                 style="font-size:10px;color:rgb(34, 69, 149)"></i></button>
                         <br> <br>
 
@@ -183,12 +267,17 @@
 
 
             </div>
-
+            <div id="submit_btn">
+                <button type="button" id="reset-btn">Reset</button>
+                <button type="button" id="start-btn">Start</button>
+            </div>
         </form>
 
     </div>
 
     <script src="../js/makePage.js"></script>
+    <script src="../js/localStorage.js"></script>
+
 </body>
 
 </html>

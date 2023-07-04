@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+#coverPage {
+    display: flex;
+
+}
+
+#imageContainer {
+    width: 256px;
+    height: 256px;
+}
+
+#textContainer {
+    display: flex;
+    width: 256px;
+    height: 256px;
+    align-items: end;
+    justify-content: center;
+}
+
+#cover_text {
+    margin-bottom: 3%;
+    padding: 2px;
+    text-align: center;
+}
