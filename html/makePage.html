@@ -5,12 +5,16 @@
     <title>StoryBook</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/makePage.css">
+
+
 </head>
 
 <body>
     <div id="left-container">
-        <button type="button" id="finish-btn" onclick="javascript:location.href='../html/finish.html'" value="storyBook">Finish</button>
+
         <div id="page_container">
+            <button type="button" id="finish-btn" onclick="javascript:location.href='../html/finish.html'"
+                value="storyBook">Finish</button>
             <button type="button" class="page-btn">Cover</button>
             <button type="button" class="page-btn">Page1</button>
         </div>
@@ -35,7 +39,76 @@
 
 
             </div>
+
+            <!-- cover顏色 -->
+            <div id="colorSelect">
+                <div id="coverColor">
+                    <P>Back cover color</P>
+                    <button type="button" id="red" class="bg_color" data-background="#AE3535"
+                        data-text="#FFFFFF">Red</button>
+
+                    <button type="button" id="orange" class="bg_color" data-background="#D98244"
+                        data-text="#FFFFFF">Orange</button>
+
+                    <button type="button" id="yellow" class="bg_color" data-background="#FFF500"
+                        data-text="#0B0508">Yellow</button>
+
+                    <button type="button" id="green" class="bg_color" data-background="#3C5431"
+                        data-text="#FFFFFF">Green</button>
+
+                    <button type="button" id="white" class="bg_color" data-background="#FFFFFF"
+                        data-text="#0B0508">White</button>
+
+                    <button type="button" id="blue" class="bg_color" data-background="#305F97"
+                        data-text="#FFFFFF">Blue</button>
+
+                    <button type="button" id="purple" class="bg_color" data-background="#644C8C"
+                        data-text="#FFFFFF">Purple</button>
+
+                    <button type="button" id="pink" class="bg_color" data-background="#9A5E7B"
+                        data-text="#FFFFFF">Pink</button>
+
+
+
+                    <button type="button" id="black" class="bg_color" data-background="#0B0508"
+                        data-text="#FFFFFF">Black</button>
+
+
+                </div>
+
+                <div id="textBgColor">
+                    <P>Text background color</P>
+                    <button type="button" id="red" class="bg_color" data-background="#DE9D9D"
+                        data-text="#0B0508">Red</button>
+
+                    <button type="button" id="orange" class="bg_color" data-background="#E3BB9D"
+                        data-text="#0B0508">Orange</button>
+
+                    <button type="button" id="yellow" class="bg_color" data-background="#fff88e"
+                        data-text="#0B0508">Yellow</button>
+
+                    <button type="button" id="green" class="bg_color" data-background="#A6DCBB"
+                        data-text="#0B0508">Green</button>
+
+                    <button type="button" id="white" class="bg_color" data-background="#FFFFFF"
+                        data-text="#0B0508">White</button>
+
+                    <button type="button" id="blue" class="bg_color" data-background="#A8D0FF"
+                        data-text="#0B0508">Blue</button>
+
+                    <button type="button" id="purple" class="bg_color" data-background="#CEBEE7"
+                        data-text="#0B0508">Purple</button>
+
+                    <button type="button" id="pink" class="bg_color" data-background="#DEBCCC"
+                        data-text="#0B0508">Pink</button>
+
+
+
+
+                </div>
+            </div>
         </div>
+
         <!--產圖填寫表單-->
         <form id="allForm">
 
@@ -44,7 +117,7 @@
 
                 <!-- 故事書名稱 -->
                 <div id="bookName_contain">
-                    <label for="bookName">Book name : </label>
+                    <label for="bookName">Book name</label>
                     <br>
                     <input type="text" id="bookName">
                     <!--<input id="bookName">-->
@@ -52,7 +125,7 @@
 
                 <!-- 故事書書背文字 -->
                 <div id="backCover_contain">
-                    <label for="backCoverText">Back cover text :</label>
+                    <label for="backCoverText">Back cover text</label>
                     <br>
                     <input type="text" id="backCoverText">
                     <!--<input id="bookName">-->
@@ -60,177 +133,160 @@
 
                 <!-- 圖片文字描述 -->
                 <div id="textPrompt_contain">
-                    <label for="text-prompt">Text narrative : </label>
+                    <label for="text-prompt">Text narrative</label>
                     <br>
-                    <textarea id="text-prompt" rows="4" cols="52" placeholder="input text"></textarea>
+                    <textarea id="text-prompt" rows="4" cols="52"></textarea>
                 </div>
 
-                <!-- cover顏色 -->
-                <div id="colorSelect">
-                    <div id="coverColor">
-                        <P>Back cover color :</P>
-                        <button type="button" id="red" class="bg_color" data-background="#AE3535"
-                            data-text="#FFFFFF">Red</button>
 
-                        <button type="button" id="orange" class="bg_color" data-background="#D98244"
-                            data-text="#FFFFFF">Orange</button>
-
-                        <button type="button" id="yellow" class="bg_color" data-background="#FFF500"
-                            data-text="#0B0508">Yellow</button>
-
-                        <button type="button" id="green" class="bg_color" data-background="#3C5431"
-                            data-text="#FFFFFF">Green</button>
-
-                        <button type="button" id="blue" class="bg_color" data-background="#305F97"
-                            data-text="#FFFFFF">Blue</button>
-
-                        <button type="button" id="purple" class="bg_color" data-background="#644C8C"
-                            data-text="#FFFFFF">Purple</button>
-
-                        <button type="button" id="pink" class="bg_color" data-background="#9A5E7B"
-                            data-text="#FFFFFF">Pink</button>
-
-                        <button type="button" id="white" class="bg_color" data-background="#FFFFFF"
-                            data-text="#0B0508">White</button>
-
-                        <button type="button" id="black" class="bg_color" data-background="#0B0508"
-                            data-text="#FFFFFF">Black</button>
-
-
-                    </div>
-
-                    <div id="textBgColor">
-                        <P>Text background color :</P>
-                        <button type="button" id="red" class="bg_color" data-background="#DE9D9D"
-                            data-text="#0B0508">Red</button>
-
-                        <button type="button" id="orange" class="bg_color" data-background="#E3BB9D"
-                            data-text="#0B0508">Orange</button>
-
-                        <button type="button" id="yellow" class="bg_color" data-background="#fff88e"
-                            data-text="#0B0508">Yellow</button>
-
-                        <button type="button" id="green" class="bg_color" data-background="#A6DCBB"
-                            data-text="#0B0508">Green</button>
-
-                        <button type="button" id="blue" class="bg_color" data-background="#A8D0FF"
-                            data-text="#0B0508">Blue</button>
-
-                        <button type="button" id="purple" class="bg_color" data-background="#CEBEE7"
-                            data-text="#0B0508">Purple</button>
-
-                        <button type="button" id="pink" class="bg_color" data-background="#DEBCCC"
-                            data-text="#0B0508">Pink</button>
-
-                        <button type="button" id="white" class="bg_color" data-background="#FFFFFF"
-                            data-text="#0B0508">White</button>
-
-
-                    </div>
-                </div>
             </div>
-
             <!--圖片形容-->
             <div id="picture_container">
-                <p><b>Picture</b></p>
-                <div>
+
+                <div id="picture_style">
                     <!--圖片風格-->
+
                     <p>Picture style</p>
-                    <div>
-                        <input type="radio" id="Futurism" name="picture-style" value="Futurism">
-                        <label for="Futurism">Futurism</label>
-                    </div>
+                    <div id="style_inner">
 
-                    <div>
-                        <input type="radio" id="Pop-Art" name="picture-style" value="Pop Art">
-                        <label for="Pop-Art">Pop Art</label>
-                    </div>
+                        <div class="style_input">
+                            <input type="radio" id="Beatrix-Potter" name="picture-style" value="Beatrix Potter"
+                                checked="checked">
+                            <label for="Beatrix-Potter">Beatrix Potter</label>
+                        </div>
 
-                    <div>
-                        <input type="radio" id="Srrealism" name="picture-style" value="Surrealism">
-                        <label for="Srrealism">Srrealism</label>
-                    </div>
+                        <div class="style_input">
+                            <input type="radio" id="Hayao-Miyazaki" name="picture-style" value="Hayao Miyazaki">
+                            <label for="Hayao-Miyazaki">Hayao Miyazaki</label>
+                        </div>
 
-                    <div>
-                        <input type="radio" id="Orphism" name="picture-style" value="Orphism">
-                        <label for="Orphism">Orphism</label>
-                    </div>
+                        <div class="style_input">
+                            <input type="radio" id="Bill-Watterson" name="picture-style" value="Bill Watterson">
+                            <label for="Bill-Watterson">Bill Watterson</label>
+                        </div>
 
-                    <div>
-                        <input type="radio" id="Metaphysical-Painting" name="picture-style"
-                            value="Metaphysical Painting">
-                        <label for="Metaphysical-Painting">Metaphysical Painting</label>
+                        <div class="style_input">
+                            <input type="radio" id="Maurice-Sendak" name="picture-style" value="Maurice Sendak">
+                            <label for="Maurice-Sendak">Maurice Sendak</label>
+                        </div>
+
+                        <div class="style_input" class="style_input">
+                            <input type="radio" id="Futurism" name="picture-style" value="Futurism">
+                            <label for="Futurism">Futurism</label>
+                        </div>
+
+
+                        <div class="style_input">
+                            <input type="radio" id="Pop-Art" name="picture-style" value="Pop Art">
+                            <label for="Pop-Art">Pop Art</label>
+                        </div>
+
+                        <div class="style_input">
+                            <input type="radio" id="Srrealism" name="picture-style" value="Surrealism">
+                            <label for="Srrealism">Srrealism</label>
+                        </div>
+
+                        <!-- <div class="style_input">
+                            <input type="radio" id="Orphism" name="picture-style" value="Orphism">
+                            <label for="Orphism">Orphism</label>
+                        </div> -->
+
+                        <div class="style_input">
+                            <input type="radio" id="Metaphysical-Painting" name="picture-style"
+                                value="Metaphysical Painting">
+                            <label for="Metaphysical-Painting">Metaphysical Painting</label>
+                        </div>
+
+
+
                     </div>
-                    <br><br>
                 </div>
 
-                <div>
-                    <!--角色在哪裡-->
-                    <label for="place">Where are roles : </label>
-                    <br>
-                    <input type="text" id="place">
-                    <br><br>
-                </div>
 
-                <div>
-                    <div>
+
+                <div id="role">
+                    <div id="role-title">
                         <p>Role </p>
-                        <button type="button" id="addRole-btn"><i class="fa fa-plus"
-                                style="font-size:10px;color:rgb(34, 69, 149)"></i></button>
+                        <!-- <button type="button" id="addRole-btn"><i class="fa fa-plus"
+                                style="font-size:20px;color: #ff8535;"></i></button> -->
+
+                        <button type="button" id="addRole-btn"><i class="fa fa-plus"></i></button>
+
                     </div>
                     <!--角色形容-->
-                    <div>
-                        <p>Role 1</p>
+                    <div id="role-inner">
+                        <p>Main role</p>
                         <div>
-                            <!--角色形種類-->
-                            <p>What kind of role : </p>
-                            <div>
-                                <input type="radio" id="Human" name="role-type" value="Human">
-                                <label for="Human">Human</label>
+                            <div id="role-kind">
+                                <!--角色形種類-->
+                                <p>What kind of role : </p>
+                                <div class="kind-inner">
+                                    <input type="radio" id="Human" name="role-type" value="Human">
+                                    <label for="Human">Human</label>
+                                </div>
+                                <div class="kind-inner">
+                                    <input type="radio" id="Animal" name="role-type" value="Animal">
+                                    <label for="Animal">Animal :</label>
+                                    <input type="text" id="animal-type">
+                                </div>
 
-                                <input type="radio" id="Animal" name="role-type" value="Animal">
-                                <label for="Animal">Animal</label> <input type="text" id="animal-type">
+                                <div class="kind-inner">
+                                    <input type="radio" id="Other" name="role-type" value="Other">
+                                    <label for="Other">Other :</label>
+                                    <input type="text" id="other-type">
 
-                                <input type="radio" id="Other" name="role-type" value="Other">
-                                <label for="Other">Other</label> <input type="text" id="other-type">
+                                </div>
                             </div>
 
-                            <!--腳色性別-->
-                            <p>Biological sex : </p>
-                            <div>
-                                <input type="radio" id="sex-girl" name="sex" value="female">
-                                <label for="sex-girl">girl</label>
+                            <div id="role-sex">
+                                <!--腳色性別-->
+                                <p>Biological sex : </p>
+                                <div id="sex-inner">
+                                    <input type="radio" id="sex-girl" name="sex" value="female">
+                                    <label for="sex-girl">girl</label>
 
-                                <input type="radio" id="sex-boy" name="sex" value="male">
-                                <label for="sex-boy">boy</label>
+                                    <input type="radio" id="sex-boy" name="sex" value="male">
+                                    <label for="sex-boy">boy</label>
+
+                                </div>
+                            </div>
+
+                            <div>
+                                <!--角色年齡-->
+                                <label for="age">Age : </label>
+                                <input type="text" id="age">
+                            </div>
+
+                            <div>
+                                <!--角色心情-->
+                                <label for="mode">Mode : </label>
+                                <input type="text" id="mode">
+                            </div>
+                            <div>
+                                <!--角色動作-->
+                                <label for="action">Action : </label>
+                                <input type="text" id="action">
+                            </div>
+
+                            <div>
+                                <!--角色穿著-->
+                                <label for="wear">Wear : </label>
+                                <input type="text" id="wear">
+                            </div>
+
+                            <div>
+                                <!--角色性格-->
+                                <label for="personality">Personality : </label>
+                                <input type="text" id="personality">
+                            </div>
+
+                            <div>
+                                <!--角色在哪裡-->
+                                <label for="place">Where are roles</label>
+
+                                <input type="text" id="place">
 
                             </div>
-                            <br>
-                            <!--角色年齡-->
-                            <label for="age">Age : </label>
-                            <input type="text" id="age">
-
-                            <br> <br>
-                            <!--角色心情-->
-                            <label for="mode">Mode : </label>
-                            <input type="text" id="mode">
-
-                            <br> <br>
-                            <!--角色動作-->
-                            <label for="action">Action : </label>
-                            <input type="text" id="action">
-
-                            <br> <br>
-                            <!--角色穿著-->
-                            <label for="wear">Wear : </label>
-                            <input type="text" id="wear">
-
-                            <br> <br>
-                            <!--角色性格-->
-                            <label for="personality">Personality : </label>
-                            <input type="text" id="personality">
-
-                            <br> <br>
 
                         </div>
                     </div>

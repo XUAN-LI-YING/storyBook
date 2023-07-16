@@ -142,7 +142,7 @@ startButton.onclick = function () {
     const data = {
         'prompt': Prompt,
         'n': 1,
-        'size': "256x256",
+        'size': "512x512",
         response_format: 'url',
     };
 
@@ -151,7 +151,7 @@ startButton.onclick = function () {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer `,
+            'Authorization': `Bearer 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`,
         },
 
         body: JSON.stringify(data) //不太懂一定要有這行才能有res.json()
