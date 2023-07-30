@@ -335,7 +335,7 @@ input[type='radio']:checked:after {
     outline: none;
     padding: 12px 20px;
     width: 421px;
-    height: 30px;
+    height: 40px;
 }
 
 #picture_container input[type='text']:focus {
@@ -350,7 +350,10 @@ input[type='radio']:checked:after {
 #picture_container {
 
     padding-left: 90px;
+    padding-right: 90px;
+
     padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 #picture_style {
@@ -367,14 +370,16 @@ input[type='radio']:checked:after {
 
 #style_inner {
     display: flex;
-    margin: 10px 10px 10px 0px;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    margin: 10px 0px 10px 0px;
 
 }
 
 .style_input {
     display: flex;
     justify-content: center;
-    margin-right: 30px;
+    
 }
 
 #style_inner label {
@@ -390,7 +395,7 @@ input[type='radio']:checked:after {
 }
 
 #role-title p {
-    color: #ff8535;
+    color: #ff8535 !important;
     font-size: 23px;
     font-weight: 800;
     margin-right: 10px;
@@ -428,7 +433,7 @@ input[type='radio']:checked:after {
 }
 
 #role-inner{
-    margin-top: 10px;
+    margin-top: 20px;
 
 }
 
@@ -438,31 +443,21 @@ input[type='radio']:checked:after {
     
 }
 
-#role-kind label {
-    margin-left: 5px;
-   
-
-
+#role-kind{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px; 
 }
 
-#role-kind input {
-    margin-left: 10px;
 
 
-}
-
-#role-kind {
+#roleKind {
     display: flex;
     flex-direction: row;
-    /* text-justify: center; */
-    margin-top: 10px;
-    /* text-align: center;
-    justify-items: center;
-    text-justify: center;
-    justify-self: center;
-    align-items: center;
-    align-self: center;
-    align-content: center; */
+    justify-content: space-between;
+    margin-top: 10px; 
+    
+    
 
 }
 
@@ -488,11 +483,14 @@ input[type='radio']:checked:after {
 
 #role-sex{
     display: flex;
-    margin-top: 10px;
+    margin-top: 20px;
+    flex-direction: column;
 }
 
 #sex-inner{
     display: flex;
+    margin-top: 10px;
+
 }
 
 #sex-inner label{
@@ -505,13 +503,137 @@ input[type='radio']:checked:after {
     margin-right: 10px;
 }
 
+#roleStyle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
+.roleStyleInner{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+
+}
+
+.roleStyleInner label{
+    margin-bottom: 5px;
+}
+
+#object-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+
+}
+
+#object-title p {
+    color: #ff8535;
+    font-size: 23px;
+    font-weight: 800;
+    margin-right: 10px;
+
+}
+
+
+#addObject-btn {
+
+    border-width: 0;
+    border-radius: 800px;
+    width: 30px;
+    height: 30px;
+    background-color: #efefef;
+}
+
+#addObject-btn:hover {
+
+    transform: scale(1.2);
+
+}
+
+#addObject-btn:active {
+    background-color: #e5e5e5;
+    transform: scale(1.1);
+
+}
+
+#addObject-btn i {
+    margin: 5px;
+    font-weight: 200;
+    font-size: 20px;
+    color: #ff8535;
+    border-width: 100;
+}
+
+
+
+.objectContain{
+    
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.objectContain p{
+    color: rgb(71, 47, 8);
+    font-size: 23px;
+    margin-bottom: 5px;
+}
+
+.object_Inner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+
+
+.objectInner{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.objectInner label{
+    margin: 5px;
+}
 
 /* -------------------------------- */
 
 /*---------------------------------*/
 #submit_btn {
     display: flex;
-    justify-content: center;
-    background-color: #8A97AE;
+    justify-content: space-around;
+    padding-bottom: 50px;
+   
+}
+
+#submit_btn button{
+
+    border-width: 0;
+    border-radius: 8px;
+    width: 150px;
+    height: 50px;
+    font-size: 23px;
+    background-color:#ff8535 ;
+    color: #ffffff;
+
+}
+
+
+
+#submit_btn button:hover {
+
+    transform: scale(1.2);
+
+}
+
+#submit_btn button:active {
+    background-color: #cbcbcb;
+    transform: scale(1.1);
+
 }

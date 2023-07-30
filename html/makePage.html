@@ -146,7 +146,7 @@
                 <div id="picture_style">
                     <!--圖片風格-->
 
-                    <p>Picture style</p>
+                    <p>Picture Style</p>
                     <div id="style_inner">
 
                         <div class="style_input">
@@ -219,28 +219,30 @@
                         <div>
                             <div id="role-kind">
                                 <!--角色形種類-->
-                                <p>What kind of role : </p>
-                                <div class="kind-inner">
-                                    <input type="radio" id="Human" name="role-type" value="Human">
-                                    <label for="Human">Human</label>
-                                </div>
-                                <div class="kind-inner">
-                                    <input type="radio" id="Animal" name="role-type" value="Animal">
-                                    <label for="Animal">Animal :</label>
-                                    <input type="text" id="animal-type">
-                                </div>
+                                <p>What kind of role</p>
+                                <div id="roleKind">
+                                    <div class="kind-inner">
+                                        <input type="radio" id="Human" name="role-type" value="Human">
+                                        <label for="Human">Human</label>
+                                    </div>
+                                    <div class="kind-inner">
+                                        <input type="radio" id="Animal" name="role-type" value="Animal">
+                                        <label for="Animal">Animal :</label>
+                                        <input type="text" id="animal-type">
+                                    </div>
 
-                                <div class="kind-inner">
-                                    <input type="radio" id="Other" name="role-type" value="Other">
-                                    <label for="Other">Other :</label>
-                                    <input type="text" id="other-type">
+                                    <div class="kind-inner">
+                                        <input type="radio" id="Other" name="role-type" value="Other">
+                                        <label for="Other">Other :</label>
+                                        <input type="text" id="other-type">
 
+                                    </div>
                                 </div>
                             </div>
 
                             <div id="role-sex">
                                 <!--腳色性別-->
-                                <p>Biological sex : </p>
+                                <p>Biological sex</p>
                                 <div id="sex-inner">
                                     <input type="radio" id="sex-girl" name="sex" value="female">
                                     <label for="sex-girl">girl</label>
@@ -251,41 +253,55 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <!--角色年齡-->
-                                <label for="age">Age : </label>
-                                <input type="text" id="age">
-                            </div>
+                            <div id="roleStyle">
 
-                            <div>
-                                <!--角色心情-->
-                                <label for="mode">Mode : </label>
-                                <input type="text" id="mode">
-                            </div>
-                            <div>
-                                <!--角色動作-->
-                                <label for="action">Action : </label>
-                                <input type="text" id="action">
-                            </div>
 
-                            <div>
-                                <!--角色穿著-->
-                                <label for="wear">Wear : </label>
-                                <input type="text" id="wear">
-                            </div>
+                                <div>
+                                    <div class="roleStyleInner">
+                                        <!--角色年齡-->
+                                        <label for="age">Age</label>
+                                        <input type="text" id="age">
+                                    </div>
 
-                            <div>
-                                <!--角色性格-->
-                                <label for="personality">Personality : </label>
-                                <input type="text" id="personality">
-                            </div>
+                                    <div class="roleStyleInner">
+                                        <!--角色心情-->
+                                        <label for="mode">Mode</label>
+                                        <input type="text" id="mode">
+                                    </div>
+                                </div>
 
-                            <div>
-                                <!--角色在哪裡-->
-                                <label for="place">Where are roles</label>
+                                <div>
+                                    <div class="roleStyleInner">
+                                        <!--角色動作-->
+                                        <label for="action">Action</label>
+                                        <input type="text" id="action">
+                                    </div>
 
-                                <input type="text" id="place">
 
+
+                                    <div class="roleStyleInner">
+                                        <!--角色穿著-->
+                                        <label for="wear">Wear</label>
+                                        <input type="text" id="wear">
+                                    </div>
+                                </div>
+
+                                <div>
+
+                                    <div class="roleStyleInner">
+                                        <!--角色性格-->
+                                        <label for="personality">Personality</label>
+                                        <input type="text" id="personality">
+                                    </div>
+
+                                    <div class="roleStyleInner">
+                                        <!--角色在哪裡-->
+                                        <label for="place">Where are roles</label>
+
+                                        <input type="text" id="place">
+
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -295,29 +311,38 @@
 
                 <!--場景畫面形容-->
                 <div>
-                    <div>
+                    <div id="object-title">
                         <p>Scene Object </p>
-                        <button type="button" id="sceneObject-addBtn"><i class="fa fa-plus"
-                                style="font-size:10px;color:rgb(34, 69, 149)"></i></button>
-                        <br> <br>
-
+                        <button type="button" id="addObject-btn"><i class="fa fa-plus"></i></button>
                     </div>
 
-                    <div>
-                        <p>Object 1</p>
+                    <div id="object">
+                        <div class="objectContain">
+                            <p>Object 1</p>
 
-                        <!--物件名稱-->
-                        <label for="object-name">Object name : </label>
-                        <input type="text" id="object-name">
-                        <br> <br>
-                        <!--物件顏色-->
-                        <label for="object-color">Object color : </label>
-                        <input type="text" id="object-color">
-                        <br> <br>
-                        <!--物件放哪-->
-                        <label for="object-place">Object place : </label>
-                        <input type="text" id="object-place">
-                        <br> <br>
+                            <div class="object_Inner">
+                                
+                                <div class="objectInner">
+                                    <!--物件名稱-->
+                                    <label for="object-name">Object name</label>
+                                    <input type="text" id="object-name">
+                                </div>
+
+                                <div class="objectInner">
+                                    <!--物件顏色-->
+                                    <label for="object-color">Object color</label>
+                                    <input type="text" id="object-color">
+                                </div>
+
+                                <div class="objectInner">
+                                    <!--物件放哪-->
+                                    <label for="object-place">Object place</label>
+                                    <input type="text" id="object-place">
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
 
