@@ -8,20 +8,36 @@ html {
     height: 100%;
 }
 
+#storyContainer {
+    display: flex;
+
+    flex-direction: column;
+}
+
+/* -------------------------- */
+/* cover的css */
+
 #coverPage {
     display: flex;
+    justify-content: center;
 
 }
 
-#imageContainer {
-    width: 256px;
-    height: 256px;
+
+#CoverImage {
+    width: 595.5px;
+    height: 595.5px;
 }
 
-#textContainer {
+#cover_image {
+    width: 595.5px;
+    height: 595.5px;
+}
+
+#CoverText {
     display: flex;
-    width: 256px;
-    height: 256px;
+    width: 595.5px;
+    height: 595.5px;
     align-items: end;
     justify-content: center;
 }
@@ -30,4 +46,45 @@ html {
     margin-bottom: 3%;
     padding: 2px;
     text-align: center;
+    font-size: 16pt;
+}
+
+/* ----------------------- */
+/* innerPage的CSS */
+
+#innerPageAll {
+    display: flex;
+    flex-direction: column;
+}
+
+.innerPage {
+
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.PageImage {
+    width: 595.5px;
+    height: 595.5px;
+}
+
+.page_image {
+    width: 595.5px;
+    height: 595.5px;
+}
+
+.PageText {
+    display: flex;
+    width: 595.5px;
+    height: 595.5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.page_text {
+    margin-bottom: 3%;
+    padding: 2px;
+    text-align: center;
+    font-size: 16pt;
 }

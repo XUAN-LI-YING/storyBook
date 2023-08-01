@@ -151,7 +151,7 @@ startButton.onclick = function () {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer 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`,
+            'Authorization': `Bearer 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`,
         },
 
         body: JSON.stringify(data) //不太懂一定要有這行才能有res.json()
@@ -220,7 +220,7 @@ const text_container = document.getElementById("text-container");
 //冒泡機制，讓新增的物件也被監聽，父級別被監聽子級別也會
 pageContain.addEventListener('click', (e) => {
 
-    //並不是負級別裡的所有CSS感應到，而是僅限於class="page-btn"
+    //並不是父級別裡的所有CSS感應到，而是僅限於class="page-btn"
     if (e.target.classList.contains("page-btn")) {
         //更改該頁面title
         const page_Txt = e.target.innerText;
@@ -299,7 +299,7 @@ const image_text = document.getElementById("image_text");
 
 colorSelect.addEventListener('click', (e) => {
 
-    //並不是負級別裡的所有CSS感應到，而是僅限於class="bg_color"
+    //並不是父級別裡的所有CSS感應到，而是僅限於class="bg_color"
     if (e.target.classList.contains("bg_color")) {
         const container_color = e.target.getAttribute('data-background');
         const container_text = e.target.getAttribute('data-text');
