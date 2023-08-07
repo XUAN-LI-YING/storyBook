@@ -1,7 +1,7 @@
 {
   "name": "storybook",
   "version": "1.0.0",
-  "description": "story mysql with node",
+  "description": "",
   "main": "js/sever.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
+    "html2pdf.js": "^0.10.1",
     "mysql": "^2.18.1"
   }
 }

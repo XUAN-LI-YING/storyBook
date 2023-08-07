@@ -135,48 +135,178 @@ startButton.onclick = function () {
     //-------------------------------//
 
     //-------------------------------//
-    //api
-    const Prompt = `character design,highly detailed,high quality,digital painting,illustration,photorealistic,${picture_style} , a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode} in ${rolePlace},a ${Object_color} ${Object_name} ${Object_place}`
-    console.log(Prompt);
+    //Della2 api
+    //     const Prompt = `character design,highly detailed,high quality,digital painting,illustration,photorealistic,${picture_style} , a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode} in ${rolePlace},a ${Object_color} ${Object_name} ${Object_place}`
+    //     console.log(Prompt);
 
-    const data = {
-        'prompt': Prompt,
-        'n': 1,
-        'size': "512x512",
-        response_format: 'url',
+    //     const data = {
+    //         'prompt': Prompt,
+    //         'n': 1,
+    //         'size': "512x512",
+    //         response_format: 'url',
+    //     };
+
+    //     //'Bearer api-key'
+    //     const config = {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Authorization': `Bearer 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`,
+    //             // 'Authorization': ``,
+
+    //         },
+
+    //         body: JSON.stringify(data) //不太懂一定要有這行才能有res.json()
+    //     }
+
+    //     const URL = "https://api.openai.com/v1/images/generations"
+
+    //     fetch(URL, config)
+    //         .then(res => res.json())   //不太懂res.json()
+    //         .then(json => addImages(json, prompt)) //不太懂json,prompt哪來得他又不知道vaule為多少
+    //         .catch(error => {   //關於 try catch 他產生例外但為什麼上面的有些會運作有些不會
+
+    //             alert('Web have some trouble... \n Engineer is doing maintenance');
+    //             startButton.disabled = false;
+    //             console.log(json.error.message);
+
+    //         })
+
+    // }
+    // -----------------------------------
+    //Midjourney Api
+
+
+    // const Prompt = `character design,highly detailed,high quality,digital painting,illustration,photorealistic,${picture_style} , a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode} in ${rolePlace},a ${Object_color} ${Object_name} ${Object_place}  8k, --ar 1:1`
+    //     console.log(Prompt);
+
+    // const data = JSON.stringify({
+    //     "callbackURL": "https://....", // Optional
+    //     "prompt": "a boy laughing on the beach, 8k, --ar 3:2"
+    // });
+
+    // //'api-key'
+    // const config = {
+    //     method: 'post',
+    //     maxBodyLength: Infinity,
+    //     url: 'https://api.midjourneyapi.io/v2/imagine',
+    //     headers: {
+    //         'Authorization': 'bd759232-1531-4278-9701-5812b005a464',
+    //         'Content-Type': 'application/json',
+
+    //         // 'Authorization': ``,
+
+    //     },
+
+    //     data : data
+    // }
+
+    // // const URL = "https://api.midjourneyapi.io/v2/imagine"
+
+    // fetch(config)
+    //     .then(res => console.log(res))   //不太懂res.json()
+
+    // .then(res => res.json())   //不太懂res.json()
+    // .then(res=> {console.log(JSON.stringify(response.data));})
+    // .then(json => addImages(json, prompt)) //不太懂json,prompt哪來得他又不知道vaule為多少
+    // .catch(error => {   //關於 try catch 他產生例外但為什麼上面的有些會運作有些不會
+
+    //     alert('Web have some trouble... \n Engineer is doing maintenance');
+    //     startButton.disabled = false;
+    //     console.log(json.error.message);
+
+    // })
+
+    //Midjourney Api axuios
+    const data = JSON.stringify({
+        //   "callbackURL": "https://....", // Optional
+        "prompt": "a boy laughing on the beach, 8k, --ar 3:2"
+    });
+
+    const config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://api.midjourneyapi.io/v2/imagine',
+        headers: {
+            'Authorization': 'bd759232-1531-4278-9701-5812b005a464',
+            'Content-Type': 'application/json'
+        },
+        data: data
     };
 
-    //'Bearer api-key'
-    const config = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer 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`,
-        },
-
-        body: JSON.stringify(data) //不太懂一定要有這行才能有res.json()
-    }
-    
-    const URL = "https://api.openai.com/v1/images/generations"
-
-    fetch(URL, config)
-        .then(res => res.json())   //不太懂res.json()
-        .then(json => addImages(json, prompt)) //不太懂json,prompt哪來得他又不知道vaule為多少
-        .catch(error => {   //關於 try catch 他產生例外但為什麼上面的有些會運作有些不會
-
-            alert('Web have some trouble... \n Engineer is doing maintenance');
-            startButton.disabled = false;
-            console.log(json.error.message);
-
+    axios.request(config)
+        .then((response) => {
+            result(response.data.taskId);
         })
+        .catch((error) => {
+            console.log(error);
+        });
+
+
+
+
 
 }
 
+var imageIntervalid2;
+
+function result(id) {
+    console.log(id);
+    const data = JSON.stringify({
+        //   "callbackURL": "https://....", // Optional
+        "taskId": id
+    });
+
+    const config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://api.midjourneyapi.io/v2/result',
+        headers: {
+            'Authorization': 'bd759232-1531-4278-9701-5812b005a464',
+            'Content-Type': 'application/json'
+        },
+        data: data
+    };
+
+    
+     imageIntervalid2=setInterval(() => {
+            console.log("我正在跑RES");
+            axios.request(config)
+                .then((response) => {
+                    console.log(JSON.stringify(response.data));
+                    if(response.data.imageURL!=undefined)
+                    {
+                        console.log(response.data.imageURL);
+                        addImages(response.data.imageURL);
+                        stopInterval();
+                    }
+                })
+               
+                .catch((error) => {
+                    console.log(error);
+                });
+
+
+        }, 5000);
+
+    
+
+
+}
+
+
+function stopInterval() {
+    console.log("stopInterval");
+    clearInterval(imageIntervalid2);
+}
+
+
+
 //-------------------------------//
 //將產出的網址變為IMAGE顯示在畫面中
-function addImages(jsonData, prompt) {
+function addImages(jsonData) {
 
-    console.log("我會跑?");
+    
     startButton.disabled = false;
     console.log(jsonData);
 
@@ -187,16 +317,16 @@ function addImages(jsonData, prompt) {
 
     // Parse the response object, deserialize the image data, 
     // and attach new images to the page.
-    const container = document.getElementById('image-container');
-    for (let i = 0; i < jsonData.data.length; i++) {
-        let imgData = jsonData.data[i];
-        imgAI.src = imgData.url;
-        imgAI.alt = prompt;
+    // const container = document.getElementById('image-container');
+    
+        
+        imgAI.src = jsonData;
+        // imgAI.alt = prompt;
 
 
 
 
-    }
+    
 
 }
 

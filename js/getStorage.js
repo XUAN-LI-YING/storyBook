@@ -1,14 +1,32 @@
+
+
 const cover_image = document.getElementById('cover_image');
 const CoverText = document.getElementById('CoverText');
 const cover_text = document.getElementById('cover_text');
 const StorageLength = localStorage.length;
 console.log(StorageLength);
 
+//下在此頁PDF檔
+const download_element=document.getElementById("storyContainer");
+
+
+var opt = {
+  
+    margin:       1,
+    filename:     'mystory.pdf',
+    image:        { type: 'PNG', quality: 0.98 },
+    html2canvas:  { scale: 4 },
+    jsPDF:        { unit: 'mm', format: [210,297], orientation: 'landscape' }
+  };
+
+  html2pdf(download_element,opt);
+
+//取出故事書資料
 function getItem() {
 
     //取出封面資料，
 
-    //從資料中取出圖片網址，使FINISG網頁中的COVER獲得網址
+    //從資料中取出圖片網址，使FINISH網頁中的COVER獲得網址
     const imageScr = localStorage.getItem('Cover_Image');
     console.log(imageScr);
     cover_image.src = imageScr;
@@ -38,6 +56,10 @@ function getItem() {
 
         // ------------------------------
         //產生該頁的HTML
+
+        //列印分割頁面語法
+        const pageBreak = document.createElement('div');
+
         const innerPageAll = document.getElementById('innerPageAll');
         const innerPage = document.createElement('div');
         const PageImage = document.createElement('div');
@@ -45,6 +67,7 @@ function getItem() {
         const PageText = document.createElement('div');
         const page_text = document.createElement('p');
 
+        
 
         //將innerPage加上class並歸在innerPageAll父物件之下的子物件
         innerPage.setAttribute('class', 'innerPage');
@@ -64,6 +87,10 @@ function getItem() {
         page_text.setAttribute('class', 'page_text');
         page_text.setAttribute('id', `page${i}_text`);
         PageText.appendChild(page_text);
+
+        //頁面分割html
+        pageBreak.setAttribute('class', 'html2pdf__page-break');
+        innerPageAll.appendChild(pageBreak);
 
         // ------------------------------
         // 取出該頁的資料
