@@ -174,53 +174,13 @@ startButton.onclick = function () {
 
     // }
     // -----------------------------------
-    //Midjourney Api
-
-
-    // const Prompt = `character design,highly detailed,high quality,digital painting,illustration,photorealistic,${picture_style} , a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode} in ${rolePlace},a ${Object_color} ${Object_name} ${Object_place}  8k, --ar 1:1`
-    //     console.log(Prompt);
-
-    // const data = JSON.stringify({
-    //     "callbackURL": "https://....", // Optional
-    //     "prompt": "a boy laughing on the beach, 8k, --ar 3:2"
-    // });
-
-    // //'api-key'
-    // const config = {
-    //     method: 'post',
-    //     maxBodyLength: Infinity,
-    //     url: 'https://api.midjourneyapi.io/v2/imagine',
-    //     headers: {
-    //         'Authorization': 'bd759232-1531-4278-9701-5812b005a464',
-    //         'Content-Type': 'application/json',
-
-    //         // 'Authorization': ``,
-
-    //     },
-
-    //     data : data
-    // }
-
-    // // const URL = "https://api.midjourneyapi.io/v2/imagine"
-
-    // fetch(config)
-    //     .then(res => console.log(res))   //不太懂res.json()
-
-    // .then(res => res.json())   //不太懂res.json()
-    // .then(res=> {console.log(JSON.stringify(response.data));})
-    // .then(json => addImages(json, prompt)) //不太懂json,prompt哪來得他又不知道vaule為多少
-    // .catch(error => {   //關於 try catch 他產生例外但為什麼上面的有些會運作有些不會
-
-    //     alert('Web have some trouble... \n Engineer is doing maintenance');
-    //     startButton.disabled = false;
-    //     console.log(json.error.message);
-
-    // })
-
     //Midjourney Api axuios
     const data = JSON.stringify({
         //   "callbackURL": "https://....", // Optional
         "prompt": "a boy laughing on the beach, 8k, --ar 3:2"
+        // "prompt": `character design,highly detailed,high quality,digital painting,illustration,photorealistic,${picture_style} , a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode} in ${rolePlace},a ${Object_color} ${Object_name} ${Object_place} ,8k, --ar 3:2`
+
+
     });
 
     const config = {
@@ -228,7 +188,7 @@ startButton.onclick = function () {
         maxBodyLength: Infinity,
         url: 'https://api.midjourneyapi.io/v2/imagine',
         headers: {
-            'Authorization': 'bd759232-1531-4278-9701-5812b005a464',
+            // 'Authorization': 'bd759232-1531-4278-9701-5812b005a464',
             'Content-Type': 'application/json'
         },
         data: data
@@ -240,6 +200,8 @@ startButton.onclick = function () {
         })
         .catch((error) => {
             console.log(error);
+            startButton.disabled = false;
+
         });
 
 
@@ -268,34 +230,35 @@ function result(id) {
         data: data
     };
 
-    
-     imageIntervalid2=setInterval(() => {
-            console.log("我正在跑RES");
-            axios.request(config)
-                .then((response) => {
-                    console.log(JSON.stringify(response.data));
-                    if(response.data.imageURL!=undefined)
-                    {
-                        console.log(response.data.imageURL);
-                        addImages(response.data.imageURL);
-                        stopInterval();
-                    }
-                })
-               
-                .catch((error) => {
-                    console.log(error);
-                });
+
+    imageIntervalid2 = setInterval(() => {
+        console.log("我正在跑RES");
+        axios.request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                if (response.data.imageURL != undefined) {
+                    console.log(response.data.imageURL);
+                    addImages(response.data.imageURL);
+                    stopInterval2();
+                }
+            })
+
+            .catch((error) => {
+                console.log(error);
+                startButton.disabled = false;
+
+            });
 
 
-        }, 5000);
+    }, 5000);
 
-    
+
 
 
 }
 
 
-function stopInterval() {
+function stopInterval2() {
     console.log("stopInterval");
     clearInterval(imageIntervalid2);
 }
@@ -306,7 +269,7 @@ function stopInterval() {
 //將產出的網址變為IMAGE顯示在畫面中
 function addImages(jsonData) {
 
-    
+
     startButton.disabled = false;
     console.log(jsonData);
 
@@ -318,15 +281,15 @@ function addImages(jsonData) {
     // Parse the response object, deserialize the image data, 
     // and attach new images to the page.
     // const container = document.getElementById('image-container');
-    
-        
-        imgAI.src = jsonData;
-        // imgAI.alt = prompt;
+
+
+    imgAI.src = jsonData;
+    // imgAI.alt = prompt;
 
 
 
 
-    
+
 
 }
 
@@ -360,7 +323,15 @@ pageContain.addEventListener('click', (e) => {
         //將故事書文字歸零#但之後須加後端抓取資料
         Image_text.innerText = "Showing story picture and content soon.";
         //將故事書圖片歸零#但之後須加後端抓取資料
-        imgAI.src = "../picture/storyPicContainer3.png";
+
+        if(localStorage.getItem(`${pageName.innerText}_Image`)==null || localStorage.getItem(`${pageName.innerText}_Image`)==undefined){
+            imgAI.src = "../picture/storyPicContainer3.png";
+        }
+        else(
+            imgAI.src =localStorage.getItem(`${pageName.innerText}_Image`)
+        )
+
+        
         imgAI.alt = "";
         changePageInner();
         //---console.log--//
