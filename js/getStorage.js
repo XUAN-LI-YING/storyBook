@@ -3,6 +3,7 @@
 const cover_image = document.getElementById('cover_image');
 const CoverText = document.getElementById('CoverText');
 const cover_text = document.getElementById('cover_text');
+const bookTitle=document.getElementById('bookTitle');
 const StorageLength = localStorage.length;
 console.log(StorageLength);
 
@@ -35,6 +36,8 @@ function getItem() {
     const textBgColor = localStorage.getItem('Cover_Background_color');
     const textColor = localStorage.getItem('Cover_Text_color');
     const text = localStorage.getItem('Cover_Text');
+    // 提取書名
+    const bookName=localStorage.getItem('Book_Title');
 
     console.log(textBgColor);
     console.log(textColor);
@@ -42,12 +45,14 @@ function getItem() {
     CoverText.style.background = textBgColor;
     cover_text.style.color = textColor;
     cover_text.innerText = text;
+    bookTitle.innerText=bookName;
+    
 
     // ---------------------------------------------
     // 取出內頁資料
 
     // 計算有幾頁內頁
-    const pageNum = (StorageLength / 4) - 1;
+    const pageNum = ((StorageLength-6 )/ 5);
     console.log(pageNum);
 
     //依序新增每一頁並將每一頁的資料放入
@@ -94,7 +99,7 @@ function getItem() {
 
         // ------------------------------
         // 取出該頁的資料
-        const PageImageKey = localStorage.getItem(`Page ${i}_Image`);
+        const PageImageKey = localStorage.getItem(`Page ${i}_base64Image`);
         const PageTextKey = localStorage.getItem(`Page ${i}_Text`);
         const PageTextColorKey = localStorage.getItem(`Page ${i}_Text_color`);
         const PageBgColorKey = localStorage.getItem(`Page ${i}_Background_color`);

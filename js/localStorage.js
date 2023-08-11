@@ -12,17 +12,23 @@ startButton.addEventListener('click', function (e) {
   const pageName = document.getElementById('pageName');
 
 
-
+  //原本圖片照片網址
   originSrc = Image.src;
   // console.log(`照片網址${Image.src}`);
 
   // 測試區域
-  console.log(`originSrc.src${originSrc}`);
+  // console.log(`originSrc.src${originSrc}`);
 
-  imageToBase64(originSrc);
- 
+  // imageToBase64(originSrc);
+
 
   // 測試區域
+
+  // 儲存書名
+  if (pageName.innerText == "Cover") {
+    localStorage.setItem("Book_Title", bookTitle.innerText);
+  }
+
 
   //儲存文字內容
   const text = `${pageName.innerText}_Text`;
@@ -56,7 +62,7 @@ function storageImage() {
     console.log(`originSrc.src : ${originSrc}`);
     console.log(`Image.src : ${Image.src}`);
 
-
+    localStorage.setItem(`${pageName.innerText}_Image`, Image.src);
     imageToBase64(Image.src);
     // console.log(`base64_src : ${base64_src}`);
     // localStorage.setItem(`${pageName.innerText}_Image`, base64_src);
@@ -122,9 +128,9 @@ imageToBase64 = (URL) => {
       console.log(base64URL.length);
       console.log(localStorage.length);
 
-      localStorage.setItem(`${pageName.innerText}_Image`, base64URL);
+      localStorage.setItem(`${pageName.innerText}_base64Image`, base64URL);
       console.log(canvas.toDataURL("image/jpeg", 0.5));
-     
+
 
     } catch (err) {
       console.error(err)

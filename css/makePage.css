@@ -155,6 +155,14 @@ textarea {
 
 }
 
+#bookTitle {
+    position: absolute;
+    top: 180px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 23px;
+    z-index: 2;
+}
+
 #text-container {
     width: 421px;
     height: 421px;
@@ -320,9 +328,9 @@ input[type='radio']:checked:after {
 
 }
 
-#allForm label{
+#allForm label {
     font-size: 23px;
-    color:#472f08;
+    color: #472f08;
 }
 
 #picture_container input[type='text'] {
@@ -370,7 +378,7 @@ input[type='radio']:checked:after {
 
 #style_inner {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin: 10px 0px 10px 0px;
 
@@ -379,7 +387,7 @@ input[type='radio']:checked:after {
 .style_input {
     display: flex;
     justify-content: center;
-    
+
 }
 
 #style_inner label {
@@ -432,21 +440,21 @@ input[type='radio']:checked:after {
     border-width: 100;
 }
 
-#role-inner{
+#role-inner {
     margin-top: 20px;
 
 }
 
 #role p {
     font-size: 23px;
-    color:#472f08;
-    
+    color: #472f08;
+
 }
 
-#role-kind{
+#role-kind {
     display: flex;
     flex-direction: column;
-    margin-top: 30px; 
+    margin-top: 30px;
 }
 
 
@@ -455,55 +463,79 @@ input[type='radio']:checked:after {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 10px; 
-    
-    
+    margin-top: 10px;
+
+
 
 }
 
-.kind-inner{
-   display: flex;
+.kind-inner {
+    display: flex;
 }
 
-.kind-inner input[type='text']
-{
-    border-top:  0  !important;
-    border-left:  0  !important;
-    border-right:  0  !important;
-    background-color: #FFF!important;
-    border-bottom: 2px solid #ccc  !important;
-    
+.kind-inner input[type='text'] {
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    background-color: #FFF !important;
+    border-bottom: 2px solid #ccc !important;
+
 }
 
-.kind-inner input[type='text']:focus
-{
-    
-    border-bottom:1.5px solid #555 !important;
+.kind-inner input[type='text']:focus {
+
+    border-bottom: 1.5px solid #555 !important;
 }
 
-#role-sex{
+#role-sex {
     display: flex;
     margin-top: 20px;
     flex-direction: column;
 }
 
-#sex-inner{
+#sex-inner {
     display: flex;
     margin-top: 10px;
 
 }
 
-#sex-inner label{
+#sex-inner label {
     margin-left: 5px;
     margin-right: 10px;
 
 }
 
-#role-sex p{
+#role-sex p {
     margin-right: 10px;
 }
 
-#roleStyle{
+#samePic {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+#samePicPage {
+
+    margin-top: 10px;
+
+}
+
+#samePicPage {
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    background-color: #FFF !important;
+    border-bottom: 2px solid #ccc !important;
+
+}
+
+#samePicPage :focus {
+
+    border-bottom: 1.5px solid #555 !important;
+}
+
+#roleStyle {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -511,14 +543,14 @@ input[type='radio']:checked:after {
     margin-bottom: 20px;
 }
 
-.roleStyleInner{
+.roleStyleInner {
     display: flex;
     flex-direction: column;
     margin-top: 15px;
 
 }
 
-.roleStyleInner label{
+.roleStyleInner label {
     margin-bottom: 5px;
 }
 
@@ -570,20 +602,20 @@ input[type='radio']:checked:after {
 
 
 
-.objectContain{
-    
+.objectContain {
+
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
 
-.objectContain p{
+.objectContain p {
     color: rgb(71, 47, 8);
     font-size: 23px;
     margin-bottom: 5px;
 }
 
-.object_Inner{
+.object_Inner {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -592,13 +624,13 @@ input[type='radio']:checked:after {
 
 
 
-.objectInner{
+.objectInner {
     display: flex;
     flex-direction: column;
-    
+
 }
 
-.objectInner label{
+.objectInner label {
     margin: 5px;
 }
 
@@ -609,17 +641,17 @@ input[type='radio']:checked:after {
     display: flex;
     justify-content: space-around;
     padding-bottom: 50px;
-   
+
 }
 
-#submit_btn button{
+#submit_btn button {
 
     border-width: 0;
     border-radius: 8px;
     width: 150px;
     height: 50px;
     font-size: 23px;
-    background-color:#ff8535 ;
+    background-color: #ff8535;
     color: #ffffff;
 
 }

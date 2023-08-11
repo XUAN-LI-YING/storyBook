@@ -7,14 +7,34 @@ const imgAI = document.getElementById('image');
 const TextPrompt = document.getElementById('text-prompt');
 //抓住故事封底文字
 const text = document.getElementById('backCoverText');
-
-
+//偵測左測按鈕
+const leftPageBtn = document.getElementsByClassName('page-btn');
+//左側加頁按鈕
+const addPageButton = document.getElementById('addPage-btn');
+//偵測書名
+const bookTitle = document.getElementById('bookTitle');
+// 書名一開始影藏，產出圖片後才顯示title
+bookTitle.hidden = true;
 
 startButton.onclick = function () {
 
-    //按鈕無法讓使用者按，避免使用者重複送出
+    //按鈕無法讓使用者按，避免使用者重複送出、或送出中斷
+    console.log(leftPageBtn);
     startButton.disabled = true;
+    // addPageButton.disabled = true;
+
+    // for(let i=0;i<leftPageBtn.length;i++)
+    // {
+    //     leftPageBtn[i].disabled = true;
+    // }
+
+
     alert('Creating picture now \n Please wait...');
+
+    //抓取故事書名稱
+    // 填入故事書名稱
+    const bookNameValue = document.getElementById('bookName').value;
+    bookTitle.innerText = bookNameValue;
 
     //抓取使用者所填寫資料
     //抓取故事文字
@@ -22,10 +42,11 @@ startButton.onclick = function () {
     const pageName = document.getElementById('pageName');
     const PromptValue = TextPrompt.value;
     const textValue = text.value;
+
     if (pageName.innerText == 'Cover') {
 
         //所填入的書背文產生在故事書旁
-        Image_text.innerText = textValue
+        Image_text.innerText = textValue;
     }
     else {
         //所填入的內文產生在故事書旁
@@ -98,6 +119,12 @@ startButton.onclick = function () {
     }
 
     console.log(role_sex);
+
+    // 在哪一頁出現相同的角色
+    const samePicPage = document.getElementById('samePicPage').value;
+    // 提取該頁的原始discord url
+    const samePicUrl = localStorage.getItem(`${samePicPage}_Image`);
+
 
 
     //年齡
@@ -175,10 +202,14 @@ startButton.onclick = function () {
     // }
     // -----------------------------------
     //Midjourney Api axuios
+    
+    const Prompt = `${samePicUrl}, a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode} in ${rolePlace},a ${Object_color} ${Object_name} ${Object_place},${picture_style},highly detailed,high quality,children's storybook illustration style,illustration,8k,--ar 1:1`
+
+    console.log(Prompt);
     const data = JSON.stringify({
         //   "callbackURL": "https://....", // Optional
-        "prompt": "a boy laughing on the beach, 8k, --ar 3:2"
-        // "prompt": `character design,highly detailed,high quality,digital painting,illustration,photorealistic,${picture_style} , a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode} in ${rolePlace},a ${Object_color} ${Object_name} ${Object_place} ,8k, --ar 3:2`
+    
+        "prompt": Prompt
 
 
     });
@@ -188,7 +219,7 @@ startButton.onclick = function () {
         maxBodyLength: Infinity,
         url: 'https://api.midjourneyapi.io/v2/imagine',
         headers: {
-            // 'Authorization': 'bd759232-1531-4278-9701-5812b005a464',
+            'Authorization': 'bd759232-1531-4278-9701-5812b005a464',
             'Content-Type': 'application/json'
         },
         data: data
@@ -196,6 +227,7 @@ startButton.onclick = function () {
 
     axios.request(config)
         .then((response) => {
+            console.log(JSON.stringify(response.data));
             result(response.data.taskId);
         })
         .catch((error) => {
@@ -211,12 +243,12 @@ startButton.onclick = function () {
 }
 
 var imageIntervalid2;
-
 function result(id) {
     console.log(id);
     const data = JSON.stringify({
         //   "callbackURL": "https://....", // Optional
-        "taskId": id
+        "taskId": id,
+        "position": "4"
     });
 
     const config = {
@@ -258,6 +290,7 @@ function result(id) {
 }
 
 
+
 function stopInterval2() {
     console.log("stopInterval");
     clearInterval(imageIntervalid2);
@@ -270,7 +303,7 @@ function stopInterval2() {
 function addImages(jsonData) {
 
 
-    startButton.disabled = false;
+
     console.log(jsonData);
 
     if (jsonData.error) {
@@ -278,17 +311,13 @@ function addImages(jsonData) {
         return;
     }
 
-    // Parse the response object, deserialize the image data, 
-    // and attach new images to the page.
-    // const container = document.getElementById('image-container');
-
-
     imgAI.src = jsonData;
     // imgAI.alt = prompt;
 
-
-
-
+    // 圖片產出後即可再次製作圖片
+    startButton.disabled = false;
+    // 圖片產出顯示故事書的title
+    bookTitle.hidden = true;
 
 
 }
@@ -298,7 +327,7 @@ function addImages(jsonData) {
 //-------
 //按下假的更換頁面
 let pageContain = document.querySelector("#page_container");
-const pageName = document.getElementById('pageName');
+
 const bookName_contain = document.getElementById('bookName_contain');
 const backCover_contain = document.getElementById('backCover_contain');
 const textPrompt_contain = document.getElementById('textPrompt_contain');
@@ -324,14 +353,14 @@ pageContain.addEventListener('click', (e) => {
         Image_text.innerText = "Showing story picture and content soon.";
         //將故事書圖片歸零#但之後須加後端抓取資料
 
-        if(localStorage.getItem(`${pageName.innerText}_Image`)==null || localStorage.getItem(`${pageName.innerText}_Image`)==undefined){
+        if (localStorage.getItem(`${pageName.innerText}_Image`) == null || localStorage.getItem(`${pageName.innerText}_Image`) == undefined) {
             imgAI.src = "../picture/storyPicContainer3.png";
         }
-        else(
-            imgAI.src =localStorage.getItem(`${pageName.innerText}_Image`)
+        else (
+            imgAI.src = localStorage.getItem(`${pageName.innerText}_Image`)
         )
 
-        
+
         imgAI.alt = "";
         changePageInner();
         //---console.log--//
@@ -374,7 +403,7 @@ changePageInner();
 
 //-------新增Page
 //..增加PAGE按鈕onclick...
-const addPageButton = document.getElementById('addPage-btn');
+
 addPageButton.onclick = function () {
 
     //新增button

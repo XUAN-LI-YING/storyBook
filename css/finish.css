@@ -20,18 +20,28 @@ html {
 #coverPage {
     display: flex;
     justify-content: center;
-
+    
 }
 
 
 #CoverImage {
     width: 595.5px;
     height: 595.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #cover_image {
     width: 595.5px;
     height: 595.5px;
+}
+
+#bookTitle {
+    position: absolute;
+    top: 50px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 30px;
 }
 
 #CoverText {

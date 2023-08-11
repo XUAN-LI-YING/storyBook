@@ -5,7 +5,13 @@
     <title>StoryBook</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/makePage.css">
-
+    <!-- 字體link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&family=Oxygen&family=Roboto+Slab&family=Signika+Negative:wght@600;700&display=swap"
+        rel="stylesheet">
+    <!--  -->
 
 </head>
 
@@ -30,9 +36,12 @@
             <div id=storybook-content>
 
                 <div id="image-container">
-                    <!-- <img id="image" src="../picture/storyPicContainer3.png" alt=""> -->
-                    <img id="image"  src=" https://cdn.discordapp.com/attachments/1104750564555886632/1138833164266127501/qq11_a_boy_laughing_on_the_beach_8k___0998489627882611___1171866a-bd39-4a1b-b624-ba8bd5d7ae9e.png" alt="">
+                    <img id="image" src="../picture/storyPicContainer3.png" alt="">
 
+                    <!-- <img id="image"
+                        src=" https://cdn.discordapp.com/attachments/1104750564555886632/1138833164266127501/qq11_a_boy_laughing_on_the_beach_8k___0998489627882611___1171866a-bd39-4a1b-b624-ba8bd5d7ae9e.png"
+                        alt=""> -->
+                    <span id="bookTitle">我是書名</span>
                 </div>
 
                 <div id="text-container">
@@ -152,40 +161,41 @@
                     <div id="style_inner">
 
                         <div class="style_input">
-                            <input type="radio" id="Beatrix-Potter" name="picture-style" value="Beatrix Potter"
+                            <input type="radio" id="Paint-by-Numbers" name="picture-style" value="Paint-by-Numbers"
                                 checked="checked">
-                            <label for="Beatrix-Potter">Beatrix Potter</label>
+                            <label for="Paint-by-Numbers">Paint By Numbers</label>
                         </div>
 
                         <div class="style_input">
-                            <input type="radio" id="Hayao-Miyazaki" name="picture-style" value="Hayao Miyazaki">
-                            <label for="Hayao-Miyazaki">Hayao Miyazaki</label>
+                            <input type="radio" id="Watercolor" name="picture-style" value="Watercolor">
+                            <label for="Watercolor">Watercolor</label>
                         </div>
 
                         <div class="style_input">
-                            <input type="radio" id="Bill-Watterson" name="picture-style" value="Bill Watterson">
-                            <label for="Bill-Watterson">Bill Watterson</label>
+                            <input type="radio" id="Japanese Ukiyo-e" name="picture-style" value="Japanese Ukiyo-e">
+                            <label for="Japanese Ukiyo-e">Japanese Ukiyo-e</label>
                         </div>
 
                         <div class="style_input">
-                            <input type="radio" id="Maurice-Sendak" name="picture-style" value="Maurice Sendak">
-                            <label for="Maurice-Sendak">Maurice Sendak</label>
+                            <input type="radio" id="Surrealism" name="picture-style" value="Surrealism">
+                            <label for="Surrealism">Surrealism</label>
                         </div>
 
                         <div class="style_input" class="style_input">
-                            <input type="radio" id="Futurism" name="picture-style" value="Futurism">
-                            <label for="Futurism">Futurism</label>
+                            <input type="radio" id="oil-painting" name="picture-style" value="oil painting">
+                            <label for="oil-painting">Oil Painting</label>
                         </div>
 
 
                         <div class="style_input">
-                            <input type="radio" id="Pop-Art" name="picture-style" value="Pop Art">
-                            <label for="Pop-Art">Pop Art</label>
+                            <input type="radio" id="Miyazaki-Hayao-style" name="picture-style"
+                                value="Miyazaki Hayao style">
+                            <label for="Miyazaki-Hayao-style">Miyazaki Hayao Style</label>
                         </div>
 
                         <div class="style_input">
-                            <input type="radio" id="Srrealism" name="picture-style" value="Surrealism">
-                            <label for="Srrealism">Srrealism</label>
+                            <input type="radio" id="Pixar" name="picture-style" value="Pixar">
+                            <label for="Pixar">Pixar Style</label>
                         </div>
 
                         <!-- <div class="style_input">
@@ -194,9 +204,8 @@
                         </div> -->
 
                         <div class="style_input">
-                            <input type="radio" id="Metaphysical-Painting" name="picture-style"
-                                value="Metaphysical Painting">
-                            <label for="Metaphysical-Painting">Metaphysical Painting</label>
+                            <input type="radio" id="Beatrix-Potter" name="picture-style" value="Beatrix Potter">
+                            <label for="Beatrix-Potter">Beatrix Potter Style</label>
                         </div>
 
 
@@ -253,6 +262,12 @@
                                     <label for="sex-boy">boy</label>
 
                                 </div>
+                            </div>
+
+                            <div id="samePic">
+                                <label for="samePicPage">Which page does this character appear on?</label>
+                                <input type="text" id="samePicPage">
+
                             </div>
 
                             <div id="roleStyle">
@@ -323,7 +338,7 @@
                             <p>Object 1</p>
 
                             <div class="object_Inner">
-                                
+
                                 <div class="objectInner">
                                     <!--物件名稱-->
                                     <label for="object-name">Object name</label>
