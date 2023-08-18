@@ -202,13 +202,21 @@ startButton.onclick = function () {
     // }
     // -----------------------------------
     //Midjourney Api axuios
+
+    let Prompt;
+    if (samePicUrl == null) {
+        Prompt = `a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode}  ${rolePlace},a ${Object_color} ${Object_name} ${Object_place},${picture_style},highly detailed,high quality,children's storybook illustration style,illustration,8k,--ar 1:1`
+
+    }
+    else {
+        Prompt = `${samePicUrl}, a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode}  ${rolePlace},a ${Object_color} ${Object_name} ${Object_place},${picture_style},highly detailed,high quality,children's storybook illustration style,illustration,8k,--ar 1:1`
+    }
     
-    const Prompt = `${samePicUrl}, a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode} in ${rolePlace},a ${Object_color} ${Object_name} ${Object_place},${picture_style},highly detailed,high quality,children's storybook illustration style,illustration,8k,--ar 1:1`
 
     console.log(Prompt);
     const data = JSON.stringify({
         //   "callbackURL": "https://....", // Optional
-    
+
         "prompt": Prompt
 
 
@@ -219,7 +227,7 @@ startButton.onclick = function () {
         maxBodyLength: Infinity,
         url: 'https://api.midjourneyapi.io/v2/imagine',
         headers: {
-            'Authorization': 'bd759232-1531-4278-9701-5812b005a464',
+            'Authorization': '202b12a2-f357-409b-885e-0a233f9bf779',
             'Content-Type': 'application/json'
         },
         data: data
@@ -248,7 +256,7 @@ function result(id) {
     const data = JSON.stringify({
         //   "callbackURL": "https://....", // Optional
         "taskId": id,
-        "position": "4"
+        "position": "2"
     });
 
     const config = {
@@ -256,7 +264,7 @@ function result(id) {
         maxBodyLength: Infinity,
         url: 'https://api.midjourneyapi.io/v2/result',
         headers: {
-            'Authorization': 'bd759232-1531-4278-9701-5812b005a464',
+            'Authorization': '202b12a2-f357-409b-885e-0a233f9bf779',
             'Content-Type': 'application/json'
         },
         data: data
@@ -317,7 +325,7 @@ function addImages(jsonData) {
     // 圖片產出後即可再次製作圖片
     startButton.disabled = false;
     // 圖片產出顯示故事書的title
-    bookTitle.hidden = true;
+    bookTitle.hidden = false;
 
 
 }

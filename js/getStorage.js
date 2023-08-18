@@ -28,7 +28,7 @@ function getItem() {
     //取出封面資料，
 
     //從資料中取出圖片網址，使FINISH網頁中的COVER獲得網址
-    const imageScr = localStorage.getItem('Cover_Image');
+    const imageScr = localStorage.getItem('Cover_base64Image');
     console.log(imageScr);
     cover_image.src = imageScr;
 
