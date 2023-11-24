@@ -14,6 +14,7 @@ const addPageButton = document.getElementById('addPage-btn');
 //偵測書名
 const bookTitle = document.getElementById('bookTitle');
 // 書名一開始影藏，產出圖片後才顯示title
+
 bookTitle.hidden = true;
 
 startButton.onclick = function () {
@@ -358,8 +359,11 @@ pageContain.addEventListener('click', (e) => {
         //將所有input歸零
         document.getElementById("allForm").reset();
         //將故事書文字歸零#但之後須加後端抓取資料
+        //這裡reset有bug，什麼時要取後端資料，什麼時候reset
         Image_text.innerText = "Showing story picture and content soon.";
+
         //將故事書圖片歸零#但之後須加後端抓取資料
+        //這裡reset有bug，什麼時要取後端資料，什麼時候reset
 
         if (localStorage.getItem(`${pageName.innerText}_Image`) == null || localStorage.getItem(`${pageName.innerText}_Image`) == undefined) {
             imgAI.src = "../picture/storyPicContainer3.png";
@@ -367,6 +371,14 @@ pageContain.addEventListener('click', (e) => {
         else (
             imgAI.src = localStorage.getItem(`${pageName.innerText}_Image`)
         )
+
+        if (localStorage.getItem(`${pageName.innerText}_Text`) == null || localStorage.getItem(`${pageName.innerText}_Text`) == undefined) {
+            Image_text.innerText = "Showing story picture and content soon.";
+        }
+        else (
+            Image_text.innerText = localStorage.getItem(`${pageName.innerText}_Text`)
+        )
+
 
 
         imgAI.alt = "";

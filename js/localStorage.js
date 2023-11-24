@@ -2,6 +2,7 @@
 
 let imageIntervalid;
 
+
 startButton.addEventListener('click', function (e) {
 
 

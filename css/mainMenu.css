@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#mainMenu {
+    height: 60px;
+    width: 100%;
+    background-color: #162D3F;
+    display: flex;
+    flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+}
+
+#icon {
+  
+    color: #F0E6D2;
+    font-size: 25px;
+    font-family: 'Suez One', serif;
+}
+
+#mainMenu button{
+    background: none;
+    border: none;
+    color: #f6f6f6df;
+    font-family: 'Sanchez', serif;
+    font-size: 13px;
+    margin: 20px;
+}
+
+#user img{
+    width: 40px;
+    height: 40px;
+}
