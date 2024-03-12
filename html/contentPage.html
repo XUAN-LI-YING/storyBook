@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>故事內容生成</title>
-    <link rel="stylesheet" type="text/css" href="../css/contentPage.css">
+    <link rel="stylesheet" type="text/css" href="../css/contentPage.css" />
 
     <!-- 字體 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- 字型inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
     <!--  -->
-</head>
+  </head>
 
-<body>
+  <body>
     <iframe id="mainMenu" src="./mainMenu.html"></iframe>
     <div id="progressBar">
+      <div id="fillCircle">
+        <p id="whiteNum">1</p>
+      </div>
 
-        <div id="fillCircle">
-            <P id="whiteNum">1</P>
-        </div>
+      <p class="progressName">故事內容</p>
+      <div id="straight"></div>
 
-        <P class="progressName">故事內容</P>
-        <div id="straight"></div>
+      <div class="hollowCircle">
+        <p class="blueNum">２</p>
+      </div>
 
+      <p class="progressName">故事插圖</p>
+      <div id="straight"></div>
 
-        <div class="hollowCircle">
-            <P class="blueNum">２</P>
-        </div>
+      <div class="hollowCircle">
+        <p class="blueNum">３</p>
+      </div>
 
-        <P class="progressName">故事插圖</P>
-        <div id="straight"></div>
-
-
-        <div class="hollowCircle">
-            <P class="blueNum">３</P>
-        </div>
-
-        <P class="progressName">故事確認</P>
-
-
+      <p class="progressName">故事確認</p>
     </div>
-</body>
-
+  </body>
 </html>

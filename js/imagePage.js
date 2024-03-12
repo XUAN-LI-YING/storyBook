@@ -148,12 +148,15 @@ startButton.onclick = function () {
 
   //-------------------------------//
   //Della3 api
-  const Prompt = `character design,highly detailed,high quality,digital painting,illustration,photorealistic,${picture_style} , a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode} in ${rolePlace},a ${Object_color} ${Object_name} ${Object_place}`;
-  console.log(Prompt);
+  // const Prompt = `character design,highly detailed,high quality,illustration,${picture_style} , a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode} in ${rolePlace},a ${Object_color} ${Object_name} ${Object_place}`;
+  // const Prompt = `character design,highly detailed,high quality,illustration,a cat`;
+  //
+  // console.log(Prompt);
 
   const data = {
     model: "dall-e-3",
-    prompt: Prompt,
+    prompt:
+      "這一張繪本裡的圖片，色鉛筆風格的插圖，圖片中總共有2個角色，角色1名字叫做阿熊，他是一隻小熊，棕色、毛茸茸、穿著吊帶褲、眼睛和眉毛都是黑色。角色二叫做阿宗，黑色頭髮、棕色大眼睛、小小的鼻子、5歲、穿著制服、背著書包。圖片中呈現天氣晴朗，並且阿宗與阿熊兩個人開心的跑跳在森林裡。",
     n: 1,
     size: "1024x1024",
     response_format: "b64_json",
@@ -164,24 +167,35 @@ startButton.onclick = function () {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer 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`,
+      Authorization: `Bearer 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`,
       // 'Authorization': ``,
     },
 
-    body: JSON.stringify(data), //不太懂一定要有這行才能有res.json()
+    body: JSON.stringify(data),
   };
 
   const URL = "https://api.openai.com/v1/images/generations";
 
   fetch(URL, config)
-    .then((res) => res.json()) //不太懂res.json()
-    .then((json) => addImages(json, prompt)) //不太懂json,prompt哪來得他又不知道vaule為多少
-    .catch((error) => {
-      //關於 try catch 他產生例外但為什麼上面的有些會運作有些不會
+    .then((res) => {
+      return res.json();
+    })
+    .then((json) => {
+      console.log(json);
+      console.log(json.data[0]);
+      return json.data[0];
+    })
+    .then((data) => {
+      console.log(data.b64_json);
+      // console.log(data.url);
 
+      console.log(data.revised_prompt);
+      addImages(data.b64_json, data.revised_prompt);
+    })
+    .catch((error) => {
       alert("Web have some trouble... \n Engineer is doing maintenance");
       startButton.disabled = false;
-      console.log(json.error.message);
+      console.log(error);
     });
 };
 // -----------------------------------
@@ -278,14 +292,12 @@ startButton.onclick = function () {
 //-------------------------------//
 //將產出的網址變為IMAGE顯示在畫面中
 function addImages(jsonData) {
-  console.log(jsonData);
-
   if (jsonData.error) {
     reqStatus.innerHTML = "ERROR: " + jsonData.error.message;
     return;
   }
 
-  imgAI.src = jsonData.data[0].b64_json;
+  imgAI.src = `data:image/jpeg;base64,${jsonData}`;
   // imgAI.alt = prompt;
 
   // 圖片產出後即可再次製作圖片
