@@ -156,10 +156,11 @@ startButton.onclick = function () {
   const data = {
     model: "dall-e-3",
     prompt:
-      "這一張繪本裡的圖片，色鉛筆風格的插圖，圖片中總共有2個角色，角色1名字叫做阿熊，他是一隻小熊，棕色、毛茸茸、穿著吊帶褲、眼睛和眉毛都是黑色。角色二叫做阿宗，黑色頭髮、棕色大眼睛、小小的鼻子、5歲、穿著制服、背著書包。圖片中呈現天氣晴朗，並且阿宗與阿熊兩個人開心的跑跳在森林裡。",
+      "這一張繪本裡的圖片，圖片中呈現天氣晴朗，並且男孩與熊生氣的在草地上吵架，吵架吵得非常兇，https://oaidalleapiprodscus.blob.core.windows.net/private/org-LgMb2wS8Ef5QsTCsX1d2eieu/user-fXMdTyUfpERLON7R0gHMQ9QE/img-dz3usbVUQhy6Zifa3A9XyezE.png?st=2024-03-12T14%3A27%3A59Z&se=2024-03-12T16%3A27%3A59Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-03-12T14%3A58%3A23Z&ske=2024-03-13T14%3A58%3A23Z&sks=b&skv=2021-08-06&sig=CP9ZDe%2BhOdiLNUM/5lddTKaqiR4XTodCjBx7ma%2BrcfI%3D。",
     n: 1,
     size: "1024x1024",
-    response_format: "b64_json",
+    response_format: "url",
+    // response_format: "b64_json",
   };
 
   //'Bearer api-key'
@@ -186,11 +187,12 @@ startButton.onclick = function () {
       return json.data[0];
     })
     .then((data) => {
-      console.log(data.b64_json);
-      // console.log(data.url);
+      // console.log(data.b64_json);
+      console.log(data.url);
 
       console.log(data.revised_prompt);
-      addImages(data.b64_json, data.revised_prompt);
+      // addImages(data.b64_json, data.revised_prompt);
+      addImages(data.url, data.revised_prompt);
     })
     .catch((error) => {
       alert("Web have some trouble... \n Engineer is doing maintenance");
@@ -297,7 +299,9 @@ function addImages(jsonData) {
     return;
   }
 
-  imgAI.src = `data:image/jpeg;base64,${jsonData}`;
+  // imgAI.src = `data:image/jpeg;base64,${jsonData}`;
+  imgAI.src = jsonData;
+
   // imgAI.alt = prompt;
 
   // 圖片產出後即可再次製作圖片
