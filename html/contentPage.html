@@ -4,13 +4,20 @@
     <title>故事內容生成</title>
     <link rel="stylesheet" type="text/css" href="../css/contentPage.css" />
 
-    <!-- 字體 -->
+    <!-- 進度條字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- 字型inter -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
       rel="stylesheet"
+    />
+    <!--  -->
+
+    <!--icon下一頁 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <!--  -->
   </head>
@@ -38,5 +45,59 @@
 
       <p class="progressName">故事確認</p>
     </div>
+
+    <form id="storyForm" onsubmit="create();return false">
+      <p id="title">故事書內容生成</p>
+      <div id="storySetting">
+        <div>
+          <label for="pageNum">頁數</label>
+          <input type="number" id="pageNum" min="1" max="40" required />
+        </div>
+        <div>
+          <label for="language">語言</label>
+          <select id="language">
+            <option value="中文">中文</option>
+            <option value="英文">英文</option>
+          </select>
+        </div>
+        <div>
+          <label for="suitableAge">適用年齡</label>
+          <div>
+            <input type="number" id="suitableAge" min="1" max="100" required />
+            <span>歲</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="storyContent">
+        <label for="contentInput">故事大綱</label>
+        <textarea
+          id="contentInput"
+          required
+          placeholder="輸入故事大綱EX:鼓勵孩子去上學"
+          value=""
+        ></textarea>
+      </div>
+
+      <button type="submit" id="creatBtn">生成故事</button>
+    </form>
+
+    <form id="story">
+      <div id="focus">
+        <label for="storyResult">生成結果</label>
+        <textarea id="storyResult" required readonly="true" value=""></textarea>
+      </div>
+
+      <div id="storyResultBtn">
+        <button type="button" id="revise">修改</button>
+        <button type="button" id="oneMore">重新生成</button>
+        <button type="button" id="submitBtn">
+          下一步
+          <i class="fa fa-angle-right"></i>
+        </button>
+      </div>
+    </form>
+
+    <script src="../js/contentPage.js"></script>
   </body>
 </html>
