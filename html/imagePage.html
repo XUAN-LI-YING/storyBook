@@ -50,25 +50,21 @@
     <div id="allContainer">
       <div id="noThing"></div>
       <div id="left-container">
-        <div id="page_container">
-          <button
-            type="button"
-            id="finish-btn"
-            onclick="javascript:location.href='../html/finish.html'"
-            value="storyBook"
-          >
+        <div id="left-flex">
+          <button type="button" id="finish-btn" value="storyBook">
             完成預覽
           </button>
-          <button type="button" class="page-btn">封面封底</button>
-          <button type="button" class="page-btn">第一頁</button>
-          <button type="button" class="page-btn">第二頁</button>
+          <div id="page_container">
+            <button type="button" class="page-btn">封面封底</button>
+            <button type="button" class="page-btn">第1頁</button>
+            <button type="button" class="page-btn">第2頁</button>
+          </div>
+          <button type="button" id="addPage-btn">+</button>
         </div>
-        <button type="button" id="addPage-btn">+</button>
       </div>
-
       <div id="right-container">
         <div id="top_right-container">
-          <p id="pageName">Cover</p>
+          <p id="pageName">封面封底</p>
 
           <!--產出的圖片文字-->
           <div id="storybook-content">
@@ -89,7 +85,7 @@
           <!-- cover顏色 -->
           <div id="colorSelect">
             <div id="coverColor">
-              <p>Back cover color</p>
+              <p>封底顏色</p>
               <button
                 type="button"
                 id="red"
@@ -182,7 +178,7 @@
             </div>
 
             <div id="textBgColor">
-              <p>Text background color</p>
+              <p>文字頁顏色</p>
               <button
                 type="button"
                 id="red"
@@ -264,23 +260,19 @@
               </button>
             </div>
           </div>
-        </div>
 
-        <!--產圖填寫表單-->
-        <form id="allForm">
-          <!-- 隨頁面不同改變 -->
           <div id="chang_with_page">
             <!-- 故事書名稱 -->
             <div id="bookName_contain">
-              <label for="bookName">Book name</label>
+              <label for="bookName">故事名稱</label>
               <br />
-              <input type="text" id="bookName" />
+              <input type="text" id="bookName" value="" />
               <!--<input id="bookName">-->
             </div>
 
             <!-- 故事書書背文字 -->
             <div id="backCover_contain">
-              <label for="backCoverText">Back cover text</label>
+              <label for="backCoverText">故事標語</label>
               <br />
               <input type="text" id="backCoverText" />
               <!--<input id="bookName">-->
@@ -288,274 +280,225 @@
 
             <!-- 圖片文字描述 -->
             <div id="textPrompt_contain">
-              <label for="text-prompt">Text narrative</label>
+              <label for="text-prompt">故事內容</label>
               <br />
-              <textarea id="text-prompt" rows="4" cols="52"></textarea>
+              <textarea id="text-prompt"></textarea>
             </div>
           </div>
+        </div>
+
+        <!--產圖填寫表單-->
+        <form id="allForm">
+          <!-- 隨頁面不同改變 -->
+
           <!--圖片形容-->
           <div id="picture_container">
             <div id="picture_style">
               <!--圖片風格-->
 
-              <p>Picture Style</p>
+              <p>插圖風格(複選)</p>
               <div id="style_inner">
                 <div class="style_input">
                   <input
-                    type="radio"
-                    id="Paint-by-Numbers"
-                    name="picture-style"
-                    value="Paint-by-Numbers"
-                    checked="checked"
-                  />
-                  <label for="Paint-by-Numbers">Paint By Numbers</label>
-                </div>
-
-                <div class="style_input">
-                  <input
-                    type="radio"
+                    type="checkbox"
                     id="Watercolor"
                     name="picture-style"
-                    value="Watercolor"
+                    value="Watercolor、"
+                    checked="checked"
                   />
-                  <label for="Watercolor">Watercolor</label>
+                  <label for="Watercolor">水彩</label>
                 </div>
 
                 <div class="style_input">
                   <input
-                    type="radio"
-                    id="Japanese Ukiyo-e"
+                    type="checkbox"
+                    id="Pen and Ink"
                     name="picture-style"
-                    value="Japanese Ukiyo-e"
+                    value="Pen and Ink、"
                   />
-                  <label for="Japanese Ukiyo-e">Japanese Ukiyo-e</label>
+                  <label for="Pen and Ink">鋼筆畫</label>
                 </div>
 
                 <div class="style_input">
                   <input
-                    type="radio"
-                    id="Surrealism"
+                    type="checkbox"
+                    id="Manga"
                     name="picture-style"
-                    value="Surrealism"
+                    value="Manga、"
                   />
-                  <label for="Surrealism">Surrealism</label>
+                  <label for="Manga">日本漫画</label>
+                </div>
+
+                <div class="style_input">
+                  <input
+                    type="checkbox"
+                    id="Pop Art"
+                    name="picture-style"
+                    value="Pop Art、"
+                  />
+                  <label for="Pop Art">流行藝術</label>
+                </div>
+
+                <div class="style_input">
+                  <input
+                    type="checkbox"
+                    id="Hand Drawing"
+                    name="picture-style"
+                    value="Hand Drawing、"
+                  />
+                  <label for="Hand Drawing">手繪</label>
+                </div>
+
+                <div class="style_input">
+                  <input
+                    type="checkbox"
+                    id="Fantasy Art"
+                    name="picture-style"
+                    value="Fantasy Art、"
+                  />
+                  <label for="Fantasy Art">幻想藝術</label>
+                </div>
+
+                <div class="style_input">
+                  <input
+                    type="checkbox"
+                    id="Pastel"
+                    name="picture-style"
+                    value="Pastel、"
+                  />
+                  <label for="Pastel">粉彩</label>
+                </div>
+
+                <div class="style_input">
+                  <input
+                    type="checkbox"
+                    id="Woodcut"
+                    name="picture-style"
+                    value="Woodcut、"
+                  />
+                  <label for="Woodcut">木刻</label>
+                </div>
+
+                <div class="style_input">
+                  <input
+                    type="checkbox"
+                    id="Minimalism"
+                    name="picture-style"
+                    value="Minimalism、"
+                  />
+                  <label for="Minimalism">極簡主義</label>
+                </div>
+
+                <div class="style_input">
+                  <input
+                    type="checkbox"
+                    id="Oil Painting"
+                    name="picture-style"
+                    value="Oil Painting、"
+                  />
+                  <label for="Oil Painting">油畫</label>
+                </div>
+
+                <div class="style_input">
+                  <input
+                    type="checkbox"
+                    id="Cartoon"
+                    name="picture-style"
+                    value="Cartoon、"
+                  />
+                  <label for="Cartoon">卡通</label>
+                </div>
+                <div class="style_input">
+                  <input
+                    type="checkbox"
+                    id="Line Drawing"
+                    name="picture-style"
+                    value="Line Drawing、"
+                  />
+                  <label for="Line Drawing">線描</label>
                 </div>
 
                 <div class="style_input" class="style_input">
                   <input
-                    type="radio"
-                    id="oil-painting"
+                    type="checkbox"
+                    id="Chinese Painting"
                     name="picture-style"
-                    value="oil painting"
+                    value="Chinese Painting、"
                   />
-                  <label for="oil-painting">Oil Painting</label>
+                  <label for="Chinese Painting">中國畫</label>
                 </div>
 
                 <div class="style_input">
                   <input
-                    type="radio"
-                    id="Miyazaki-Hayao-style"
+                    type="checkbox"
+                    id="Digital Illustration"
                     name="picture-style"
-                    value="Miyazaki Hayao style"
+                    value="Digital Illustration、"
                   />
-                  <label for="Miyazaki-Hayao-style">Miyazaki Hayao Style</label>
+                  <label for="Digital Illustration">數位插圖</label>
                 </div>
 
                 <div class="style_input">
                   <input
-                    type="radio"
-                    id="Pixar"
+                    type="checkbox"
+                    id="Classicism"
                     name="picture-style"
-                    value="Pixar"
+                    value="Classicism、"
                   />
-                  <label for="Pixar">Pixar Style</label>
+                  <label for="Classicism">古典主義</label>
                 </div>
-
-                <!-- <div class="style_input">
-                            <input type="radio" id="Orphism" name="picture-style" value="Orphism">
-                            <label for="Orphism">Orphism</label>
-                        </div> -->
 
                 <div class="style_input">
                   <input
-                    type="radio"
-                    id="Beatrix-Potter"
+                    type="checkbox"
+                    id="Abstract Art"
                     name="picture-style"
-                    value="Beatrix Potter"
+                    value="Abstract Art、"
                   />
-                  <label for="Beatrix-Potter">Beatrix Potter Style</label>
+                  <label for="Abstract Art">抽象主義</label>
+                </div>
+
+                <div class="style_input" id="else">
+                  <label for="elseStyle">其他：</label>
+                  <input
+                    type="text"
+                    id="elseStyle"
+                    
+                    value=""
+                  />
                 </div>
               </div>
             </div>
 
-            <div id="role">
-              <div id="role-title">
-                <p>Role</p>
-                <!-- <button type="button" id="addRole-btn"><i class="fa fa-plus"
-                                style="font-size:20px;color: #ff8535;"></i></button> -->
-
-                <button type="button" id="addRole-btn">
-                  <i class="fa fa-plus"></i>
-                </button>
+            <div id="rollStyle">
+              <div id="rollTitle">
+                <p>角色樣貌與穿著</p>
+                <button type="button" id="rollBtn">+</button>
               </div>
-              <!--角色形容-->
-              <div id="role-inner">
-                <p>Main role</p>
-                <div>
-                  <div id="role-kind">
-                    <!--角色形種類-->
-                    <p>What kind of role</p>
-                    <div id="roleKind">
-                      <div class="kind-inner">
-                        <input
-                          type="radio"
-                          id="Human"
-                          name="role-type"
-                          value="Human"
-                        />
-                        <label for="Human">Human</label>
-                      </div>
-                      <div class="kind-inner">
-                        <input
-                          type="radio"
-                          id="Animal"
-                          name="role-type"
-                          value="Animal"
-                        />
-                        <label for="Animal">Animal :</label>
-                        <input type="text" id="animal-type" />
-                      </div>
+              <div class="roll">
+                <label for="roll1">角色 1</label>
+                <textarea type="text" id="roll1" value=""></textarea>
+              </div>
+              <div class="roll">
+                <label for="roll2">角色 2</label>
 
-                      <div class="kind-inner">
-                        <input
-                          type="radio"
-                          id="Other"
-                          name="role-type"
-                          value="Other"
-                        />
-                        <label for="Other">Other :</label>
-                        <input type="text" id="other-type" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div id="role-sex">
-                    <!--腳色性別-->
-                    <p>Biological sex</p>
-                    <div id="sex-inner">
-                      <input
-                        type="radio"
-                        id="sex-girl"
-                        name="sex"
-                        value="female"
-                      />
-                      <label for="sex-girl">girl</label>
-
-                      <input
-                        type="radio"
-                        id="sex-boy"
-                        name="sex"
-                        value="male"
-                      />
-                      <label for="sex-boy">boy</label>
-                    </div>
-                  </div>
-
-                  <div id="samePic">
-                    <label for="samePicPage"
-                      >Which page does this character appear on?</label
-                    >
-                    <input type="text" id="samePicPage" />
-                  </div>
-
-                  <div id="roleStyle">
-                    <div>
-                      <div class="roleStyleInner">
-                        <!--角色年齡-->
-                        <label for="age">Age</label>
-                        <input type="text" id="age" />
-                      </div>
-
-                      <div class="roleStyleInner">
-                        <!--角色心情-->
-                        <label for="mode">Mode</label>
-                        <input type="text" id="mode" />
-                      </div>
-                    </div>
-
-                    <div>
-                      <div class="roleStyleInner">
-                        <!--角色動作-->
-                        <label for="action">Action</label>
-                        <input type="text" id="action" />
-                      </div>
-
-                      <div class="roleStyleInner">
-                        <!--角色穿著-->
-                        <label for="wear">Wear</label>
-                        <input type="text" id="wear" />
-                      </div>
-                    </div>
-
-                    <div>
-                      <div class="roleStyleInner">
-                        <!--角色性格-->
-                        <label for="personality">Personality</label>
-                        <input type="text" id="personality" />
-                      </div>
-
-                      <div class="roleStyleInner">
-                        <!--角色在哪裡-->
-                        <label for="place">Where are roles</label>
-
-                        <input type="text" id="place" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <textarea id="roll2" value=""></textarea>
               </div>
             </div>
 
-            <!--場景畫面形容-->
-            <div>
-              <div id="object-title">
-                <p>Scene Object</p>
-                <button type="button" id="addObject-btn">
-                  <i class="fa fa-plus"></i>
-                </button>
+            <div id="sameTextarea">
+              <div id="rollAction">
+                <p>角色們在做什麼</p>
+                <textarea value=""></textarea>
               </div>
-
-              <div id="object">
-                <div class="objectContain">
-                  <p>Object 1</p>
-
-                  <div class="object_Inner">
-                    <div class="objectInner">
-                      <!--物件名稱-->
-                      <label for="object-name">Object name</label>
-                      <input type="text" id="object-name" />
-                    </div>
-
-                    <div class="objectInner">
-                      <!--物件顏色-->
-                      <label for="object-color">Object color</label>
-                      <input type="text" id="object-color" />
-                    </div>
-
-                    <div class="objectInner">
-                      <!--物件放哪-->
-                      <label for="object-place">Object place</label>
-                      <input type="text" id="object-place" />
-                    </div>
-                  </div>
-                </div>
+              <div id="scene">
+                <p>場景樣貌</p>
+                <textarea value=""></textarea>
               </div>
             </div>
           </div>
-          <div id="submit_btn">
-            <button type="button" id="reset-btn">Reset</button>
-            <button type="button" id="start-btn">Start</button>
-          </div>
+
+          <button type="button" id="start-btn">儲存並生成圖片</button>
         </form>
       </div>
     </div>

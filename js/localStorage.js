@@ -19,7 +19,7 @@ startButton.addEventListener("click", function (e) {
   // 測試區域
 
   // 儲存書名
-  if (pageName.innerText == "Cover") {
+  if (pageName.innerText == "封面封底") {
     localStorage.setItem("Book_Title", bookTitle.innerText);
   }
 
@@ -135,3 +135,33 @@ function stopInterval() {
 //   });
 //   image.src = URL;
 // };
+
+//finish-btn
+// 預覽點擊時偵測現在有幾頁
+document.getElementById("finish-btn").onclick = function () {
+  // 儲存計算目前有幾頁
+  const pageBtn = document.querySelectorAll(".page-btn");
+  localStorage.setItem("目前頁數", pageBtn.length - 1);
+
+  //抓取故事書名稱
+  // 填入故事書名稱
+
+  //儲存內容區域背景顏色
+  //讀取CSS中的值而不是HTML裡的style
+  const background_color = `${pageName.innerText}_Background_color`;
+  localStorage.setItem(
+    background_color,
+    window
+      .getComputedStyle(text_container, null)
+      .getPropertyValue("background-color")
+  );
+
+  //儲存內容區域文字顏色
+  const text_color = `${pageName.innerText}_Text_color`;
+  localStorage.setItem(
+    text_color,
+    window.getComputedStyle(image_text, null).getPropertyValue("color")
+  );
+
+  location.href = "../html/finish.html";
+};

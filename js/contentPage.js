@@ -114,7 +114,7 @@ function store(storyText) {
       localStorage.setItem("Book_Title", contentArray[i]);
       console.log(contentArray[i]);
     } else {
-      localStorage.setItem(`Page ${i}_Text`, contentArray[i]);
+      localStorage.setItem(`第${i}頁_Text`, contentArray[i]);
       console.log(contentArray[i]);
     }
   }

@@ -97,28 +97,42 @@ body {
 }
 
 /* left-container */
-
 #left-container {
-  /* display: flex; */
-
+  width: 12%;
+  height: 100%;
+}
+#left-flex {
+  display: flex;
+  /* position: fixed;   固定位置 */
   flex-direction: column;
-  justify-content: start;
-  align-content: center;
-  text-align: center;
+  align-items: center;
+
   background-color: #162d3f;
   box-shadow: rgb(162 158 158 / 25%) 10px 8px 11px 0px;
   height: 100%;
-  width: 12%;
+
+  width: 100%;
   border-radius: 55px;
 }
 
 #page_container {
   margin-bottom: 15px;
+  max-height: 1500px; /* 按鈕總高度，可根據實際情況調整 */
+  overflow-y: auto;
+  margin-top: 15px;
+  width: 95%;
+  text-align: center;
+}
+#page_container::-webkit-scrollbar {
+  width: 4px; /* 更改滚动条的宽度 */
+}
+#page_container::-webkit-scrollbar-thumb {
+  background: #f0f0f0; /* 更改轨道的颜色 */
 }
 
 .page-btn {
-  margin-top: 15px;
-  width: 80%;
+  margin-bottom: 15px;
+  width: 85%;
   height: 120px;
   border-style: none;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -127,6 +141,15 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 20px;
   font-weight: 520;
+}
+
+#page_container > .page-btn:hover {
+  background-color: #f7f2e6;
+}
+
+#page_container > .page-btn:active {
+  background-color: #d9c699;
+  color: #ffffff;
 }
 
 #addPage-btn {
@@ -139,6 +162,7 @@ body {
   color: #ff8535;
   background-color: #f0e6d2;
   line-height: 60px;
+  margin: 13px auto 48px auto;
 }
 
 #addPage-btn:hover {
@@ -159,6 +183,7 @@ body {
   border-style: none;
   color: #ffffff;
   font-size: 23px;
+
   /*  */
   font-family: "Inter", sans-serif;
   font-size: 20px;
@@ -166,22 +191,21 @@ body {
   /*  */
 }
 
-#addPage-btn {
-  margin: 13px auto 48px auto;
-}
-
 /* right-container */
 
 #right-container {
   width: 83%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
 }
 
 #top_right-container {
-  padding-left: 50px;
   padding-top: 20px;
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 80%;
 }
 
 #colorSelect {
@@ -195,12 +219,10 @@ body {
 }
 
 input {
-  border: none;
   border-radius: 3px;
 }
 
 textarea {
-  border: none;
   border-radius: 3px;
 }
 
@@ -231,7 +253,7 @@ textarea {
 
 #bookTitle {
   position: absolute;
-  top: 180px;
+  top: 40%;
   font-family: "Noto Sans TC", sans-serif;
   font-size: 23px;
   z-index: 2;
@@ -252,9 +274,10 @@ textarea {
 #image_text {
   text-align: center;
   color: #f8f8f8;
-  font-size: 20px;
+  font-size: 16px;
   padding-left: 10px;
   padding-right: 10px;
+  font-family: Inter, sans-serif;
 }
 
 #coverColor {
@@ -263,9 +286,10 @@ textarea {
 }
 
 #coverColor p {
-  font-size: 23px;
+  font-size: 20px;
+  font-weight: 550;
   margin-bottom: 30px;
-  color: #472f08;
+  color: #485f70;
 }
 
 #textBgColor {
@@ -274,9 +298,10 @@ textarea {
 }
 
 #textBgColor p {
-  font-size: 23px;
+  font-size: 20px;
+  font-weight: 550;
   margin-bottom: 30px;
-  color: #472f08;
+  color: #485f70;
 }
 
 #bgColor {
@@ -298,34 +323,32 @@ textarea {
 
 /* chang_with_page */
 #chang_with_page {
+  width: 100%;
   display: flex;
   padding-bottom: 20px;
-  padding-left: 50px;
   padding-top: 60px;
   justify-content: center;
 }
 
 #chang_with_page label {
-  font-size: 23px;
-
-  color: #472f08;
+  font-size: 20px;
+  font-weight: 550;
+  color: #485f70;
 }
 
 #chang_with_page input[type="text"] {
-  font-size: 23px;
-  color: #472f08;
-  background-color: #e9e9e9;
-  border: 1px solid #ccc;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  outline: none;
-  padding: 12px 20px;
+  font-size: 20px;
+  color: #485f70;
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  padding: 20px;
   width: 421px;
   height: 40px;
+  outline: none;
 }
 
 #chang_with_page input[type="text"]:focus {
-  border: 1.5px solid #555;
+  border: 2px solid #a9a9a9;
 }
 
 #bookName_contain {
@@ -334,92 +357,89 @@ textarea {
 
 #textPrompt_contain {
   text-align: center;
+  width: 100%;
 }
 
 #textPrompt_contain textarea {
-  font-size: 23px;
-  color: #472f08;
-  background-color: #e9e9e9;
-  border: 1px solid #ccc;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 0px;
+  border: 1px solid #d1d1d1;
   outline: none;
-  padding: 12px 20px;
-  width: 842px;
-  height: 60px;
 }
 
 #textPrompt_contain textarea:focus {
-  border: 1.5px solid #555;
+  border: 2px solid #a9a9a9;
 }
 
 /* 所有輸入選項設計-------- */
 
-input[type="radio"] {
+input[type="checkbox"] {
   visibility: hidden;
   position: relative;
-  margin-right: 20px;
+  margin-right: 10px;
+  font-size: 20px;
 }
 
-input[type="radio"]::before {
+input[type="checkbox"]::before {
   width: 20px;
   height: 20px;
   border-radius: 3px;
 
   position: absolute;
-  background-color: #e9e9e9;
-  border: 1px solid #ccc;
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
 
   content: "";
   display: inline-block;
   visibility: visible;
 }
 
-input[type="radio"]:checked:after {
+input[type="checkbox"]:checked:after {
   width: 15px;
   height: 15px;
   border-radius: 1px;
-
   z-index: 1;
   position: absolute;
-
-  background-color: #ff8535;
+  background-color: #6b879a;
   content: "";
   display: inline-block;
   visibility: visible;
   transform: translate(25%, 25%);
 }
 
+#allForm {
+  font-family: "Inter", sans-serif;
+  width: 75%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 #allForm label {
-  font-size: 23px;
-  color: #472f08;
+  font-size: 20px;
 }
 
 #picture_container input[type="text"] {
-  font-size: 23px;
-  color: #472f08;
-  background-color: #e9e9e9;
-  border: 1px solid #ccc;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  font-size: 14px;
+  color: #485f70;
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  padding-right: 10px;
+  padding-left: 10px;
   outline: none;
-  padding: 12px 20px;
-  width: 421px;
-  height: 40px;
 }
 
 #picture_container input[type="text"]:focus {
-  border: 1.5px solid #555;
+  border: 2px solid #a9a9a9;
 }
 
 /* --------------------------------- */
 /* picture_container */
 #picture_container {
-  padding-left: 90px;
-  padding-right: 90px;
-
   padding-top: 50px;
-  padding-bottom: 50px;
 }
 
 #picture_style {
@@ -427,10 +447,20 @@ input[type="radio"]:checked:after {
   flex-direction: column;
 }
 
-#picture_style p {
+#picture_container p {
   color: #ff8535;
-  font-size: 23px;
+  font-size: 22px;
   font-weight: 800;
+}
+
+#picture_container label {
+  font-size: 18px;
+  color: #485f70;
+}
+
+#picture_container textarea {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
 }
 
 #style_inner {
@@ -442,241 +472,108 @@ input[type="radio"]:checked:after {
 
 .style_input {
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  width: 130px;
+}
+#else {
+  margin-right: 2px;
+  width: 100%;
+  margin-top: 7px;
+  align-items: center;
 }
 
-#style_inner label {
-  font-size: 23px;
+#else input {
+  width: 45%;
+  height: 30px;
+}
+#rollStyle {
+  margin-top: 20px;
+}
+.roll {
+  margin-top: 10px;
 }
 
-#role-title {
+.roll textarea {
+  font-size: 20px;
+  color: #485f70;
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  padding: 10px;
+  width: 100%;
+  height: 80px;
+  align-items: center;
+  outline: none;
+}
+
+.roll textarea:focus {
+  border: 2px solid #a9a9a9;
+}
+
+#rollTitle {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 10px;
 }
 
-#role-title p {
-  color: #ff8535 !important;
-  font-size: 23px;
-  font-weight: 800;
-  margin-right: 10px;
-}
-
-#addRole-btn {
+#rollBtn {
+  margin-left: 10px;
   border-width: 0;
-  border-radius: 800px;
-  width: 30px;
-  height: 30px;
-  background-color: #efefef;
+  border-radius: 500px;
+  width: 25px;
+  height: 25px;
+  font-weight: 500;
+  font-size: 25px;
+  color: #ff8535;
+  background-color: #ffffff;
 }
 
-#addRole-btn:hover {
+#rollBtn:hover {
   transform: scale(1.2);
 }
 
-#addRole-btn:active {
-  background-color: #e5e5e5;
+#rollBtn:active {
+  background-color: #eeeeee;
   transform: scale(1.1);
 }
 
-#addRole-btn i {
-  margin: 5px;
-  font-weight: 200;
-  font-size: 20px;
-  color: #ff8535;
-  border-width: 100;
-}
-
-#role-inner {
+#sameTextarea {
   margin-top: 20px;
 }
 
-#role p {
-  font-size: 23px;
-  color: #472f08;
+#sameTextarea textarea {
+  color: #485f70;
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  padding: 10px;
+  width: 100%;
+  height: 80px;
+  align-items: center;
+  outline: none;
 }
 
-#role-kind {
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
+#sameTextarea textarea:focus {
+  border: 2px solid #a9a9a9;
 }
-
-#roleKind {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.kind-inner {
-  display: flex;
-}
-
-.kind-inner input[type="text"] {
-  border-top: 0 !important;
-  border-left: 0 !important;
-  border-right: 0 !important;
-  background-color: #fff !important;
-  border-bottom: 2px solid #ccc !important;
-}
-
-.kind-inner input[type="text"]:focus {
-  border-bottom: 1.5px solid #555 !important;
-}
-
-#role-sex {
-  display: flex;
-  margin-top: 20px;
-  flex-direction: column;
-}
-
-#sex-inner {
-  display: flex;
-  margin-top: 10px;
-}
-
-#sex-inner label {
-  margin-left: 5px;
-  margin-right: 10px;
-}
-
-#role-sex p {
-  margin-right: 10px;
-}
-
-#samePic {
-  display: flex;
-  margin-top: 20px;
-  flex-direction: column;
-}
-
-#samePicPage {
-  margin-top: 10px;
-}
-
-#samePicPage {
-  border-top: 0 !important;
-  border-left: 0 !important;
-  border-right: 0 !important;
-  background-color: #fff !important;
-  border-bottom: 2px solid #ccc !important;
-}
-
-#samePicPage :focus {
-  border-bottom: 1.5px solid #555 !important;
-}
-
-#roleStyle {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+#start-btn {
+  border-radius: 6px;
+  width: 180px;
+  height: 50px;
+  border: none;
+  background-color: #e06a1c;
+  color: #ededed;
+  font-weight: 500;
+  font-size: 22px;
+  transition: 0.2s;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.roleStyleInner {
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
-}
-
-.roleStyleInner label {
-  margin-bottom: 5px;
-}
-
-#object-title {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 10px;
-}
-
-#object-title p {
-  color: #ff8535;
-  font-size: 23px;
-  font-weight: 800;
-  margin-right: 10px;
-}
-
-#addObject-btn {
-  border-width: 0;
-  border-radius: 800px;
-  width: 30px;
-  height: 30px;
-  background-color: #efefef;
-}
-
-#addObject-btn:hover {
-  transform: scale(1.2);
-}
-
-#addObject-btn:active {
-  background-color: #e5e5e5;
+#start-btn:hover {
   transform: scale(1.1);
+  background-color: #dc7733;
 }
 
-#addObject-btn i {
-  margin: 5px;
-  font-weight: 200;
-  font-size: 20px;
-  color: #ff8535;
-  border-width: 100;
-}
-
-.objectContain {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
-
-.objectContain p {
-  color: rgb(71, 47, 8);
-  font-size: 23px;
-  margin-bottom: 5px;
-}
-
-.object_Inner {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.objectInner {
-  display: flex;
-  flex-direction: column;
-}
-
-.objectInner label {
-  margin: 5px;
-}
-
-/* -------------------------------- */
-
-/*---------------------------------*/
-#submit_btn {
-  display: flex;
-  justify-content: space-around;
-  padding-bottom: 50px;
-}
-
-#submit_btn button {
-  border-width: 0;
-  border-radius: 8px;
-  width: 150px;
-  height: 50px;
-  font-size: 23px;
-  background-color: #ff8535;
-  color: #ffffff;
-}
-
-#submit_btn button:hover {
-  transform: scale(1.2);
-}
-
-#submit_btn button:active {
-  background-color: #cbcbcb;
-  transform: scale(1.1);
+#start-btn:active {
+  background-color: #ededed;
+  color: #e06a1c;
 }

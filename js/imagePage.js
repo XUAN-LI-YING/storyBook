@@ -13,6 +13,11 @@ const leftPageBtn = document.getElementsByClassName("page-btn");
 const addPageButton = document.getElementById("addPage-btn");
 //偵測書名
 const bookTitle = document.getElementById("bookTitle");
+// 新增角色
+const rollBtn = document.getElementById("rollBtn");
+// 故事書名稱
+const bookName = document.getElementById("bookName");
+
 // 書名一開始影藏，產出圖片後才顯示title
 
 bookTitle.hidden = true;
@@ -28,12 +33,12 @@ startButton.onclick = function () {
   //     leftPageBtn[i].disabled = true;
   // }
 
-  alert("Creating picture now \n Please wait...");
+  alert("插圖需再幾秒後才會生成，請勿離開此頁，謝謝您");
 
   //抓取故事書名稱
   // 填入故事書名稱
-  const bookNameValue = document.getElementById("bookName").value;
-  bookTitle.innerText = bookNameValue;
+
+  bookTitle.innerText = bookName.value;
 
   //抓取使用者所填寫資料
   //抓取故事文字
@@ -42,9 +47,11 @@ startButton.onclick = function () {
   const PromptValue = TextPrompt.value;
   const textValue = text.value;
 
-  if (pageName.innerText == "Cover") {
+  if (pageName.innerText == "封面封底") {
     //所填入的書背文產生在故事書旁
     Image_text.innerText = textValue;
+    // 並顯示書名
+    bookTitle.hidden = false;
   } else {
     //所填入的內文產生在故事書旁
     Image_text.innerText = PromptValue;
@@ -52,111 +59,55 @@ startButton.onclick = function () {
 
   //Get picture style
   const picSty = document.getElementsByName("picture-style");
-  let picture_style;
+  let picture_style = "";
   for (let i = 0; i < picSty.length; i++) {
     if (picSty[i].checked) {
-      picture_style = picSty[i].value;
-      break;
+      picture_style += picSty[i].value;
     }
   }
   console.log(picture_style);
 
-  //角色位置
-  const rolePlace = document.getElementById("place").value;
-  console.log(rolePlace);
-  //-------------------------------//
-
-  //增加Role
-
-  //What kind of role
-  const rolTyp = document.getElementsByName("role-type");
-  let Role_type;
-  for (let i = 0; i < rolTyp.length; i++) {
-    if (rolTyp[i].checked) {
-      switch (i) {
-        case 0:
-          Role_type = "";
-          break;
-        case 1:
-          Role_type = document.getElementById("animal-type").value;
-          break;
-        case 2:
-          Role_type = document.getElementById("other-type").value;
-          break;
-      }
-    }
-    console.log(Role_type);
-  }
-
-  //sex
-  const roleSex = document.getElementsByName("sex");
-  let role_sex;
-  for (let i = 0; i < roleSex.length; i++) {
-    if (roleSex[i].checked) {
-      role_sex = roleSex[i].value;
-      break;
-    }
-  }
-
-  //如果腳色是能類則是用女孩男孩去形容
-  if (Role_type == "" && role_sex == "female") {
-    role_sex = "girl";
-  } else if (Role_type == "" && role_sex == "male") {
-    role_sex = "boy";
-  }
-
-  console.log(role_sex);
-
-  // 在哪一頁出現相同的角色
-  const samePicPage = document.getElementById("samePicPage").value;
-  // 提取該頁的原始discord url
-  const samePicUrl = localStorage.getItem(`${samePicPage}_Image`);
-
-  //年齡
-  const Age = document.getElementById("age").value;
-
-  //心情
-  const Mode = document.getElementById("mode").value;
-
-  //動作
-  const Action = document.getElementById("action").value;
-
-  //穿著
-  const Wear = document.getElementById("wear").value;
-
-  //個性
-  const Personality = document.getElementById("personality").value;
-
-  console.log(Age + Mode + Action + Wear + Personality);
-  //-------------------------------//
+  // 其他style
+  const elseStyle = document.getElementById("elseStyle").value;
 
   //-------------------------------//
-  //增加Scene Object
+  //Get picture role
+  const roll = document.querySelectorAll(".roll");
 
-  //物件名稱
-  const Object_name = document.getElementById("object-name").value;
+  let roleStyle = "";
+  let roleValue;
+  for (i = 1; i <= roll.length; i++) {
+    roleValue = document.getElementById(`roll${i}`).value;
+    roleStyle += `角色${i}:\n${roleValue}\n`;
+  }
+  console.log(roleStyle);
+  //-------------------------------//
+  //Get roleAction
+  // 先獲取ID為"rollAction"的div元素
+  const rollActionDiv = document.getElementById("rollAction");
 
-  //物件顏色
-  const Object_color = document.getElementById("object-color").value;
+  // 然後從該div元素中查找textarea
+  const rollActionText = rollActionDiv.querySelector("textarea").value;
 
-  //物件位置
-  const Object_place = document.getElementById("object-place").value;
+  //-------------------------------//
+  //Get scene
 
-  console.log(Object_name + Object_color + Object_place);
+  const sceneDiv = document.getElementById("scene");
+
+  const sceneText = sceneDiv.querySelector("textarea").value;
 
   //-------------------------------//
 
   //-------------------------------//
   //Della3 api
   // const Prompt = `character design,highly detailed,high quality,illustration,${picture_style} , a  ${Personality} ${role_sex} ${Role_type} is  ${Age} years old ,wear ${Wear}, ${Action} ${Mode} in ${rolePlace},a ${Object_color} ${Object_name} ${Object_place}`;
-  // const Prompt = `character design,highly detailed,high quality,illustration,a cat`;
+  const Prompt = `幫我產出一張圖片並且符合以下要求:\n圖片風格:\n${picture_style}${elseStyle}\n角色們的樣貌與穿著:\n${roleStyle}\n角色們在做什麼:\n${rollActionText}\n圖片場景:\n${sceneText}`;
   //
-  // console.log(Prompt);
+  console.log(Prompt);
 
   const data = {
     model: "dall-e-3",
-    prompt:
-      "這一張繪本裡的圖片，圖片中呈現天氣晴朗，並且男孩與熊生氣的在草地上吵架，吵架吵得非常兇，https://oaidalleapiprodscus.blob.core.windows.net/private/org-LgMb2wS8Ef5QsTCsX1d2eieu/user-fXMdTyUfpERLON7R0gHMQ9QE/img-dz3usbVUQhy6Zifa3A9XyezE.png?st=2024-03-12T14%3A27%3A59Z&se=2024-03-12T16%3A27%3A59Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-03-12T14%3A58%3A23Z&ske=2024-03-13T14%3A58%3A23Z&sks=b&skv=2021-08-06&sig=CP9ZDe%2BhOdiLNUM/5lddTKaqiR4XTodCjBx7ma%2BrcfI%3D。",
+    prompt: Prompt,
     n: 1,
     size: "1024x1024",
     response_format: "url",
@@ -307,7 +258,6 @@ function addImages(jsonData) {
   // 圖片產出後即可再次製作圖片
   startButton.disabled = false;
   // 圖片產出顯示故事書的title
-  bookTitle.hidden = false;
 }
 
 //-------------------------------//
@@ -316,6 +266,7 @@ function addImages(jsonData) {
 //按下假的更換頁面
 let pageContain = document.querySelector("#page_container");
 
+const page_scroll = document.getElementById("page_scroll");
 const bookName_contain = document.getElementById("bookName_contain");
 const backCover_contain = document.getElementById("backCover_contain");
 const textPrompt_contain = document.getElementById("textPrompt_contain");
@@ -340,6 +291,7 @@ pageContain.addEventListener("click", (e) => {
     //將故事書圖片歸零#但之後須加後端抓取資料
     //這裡reset有bug，什麼時要取後端資料，什麼時候reset
 
+    // 顯示製作完的圖片
     if (
       localStorage.getItem(`${pageName.innerText}_Image`) == null ||
       localStorage.getItem(`${pageName.innerText}_Image`) == undefined
@@ -347,13 +299,55 @@ pageContain.addEventListener("click", (e) => {
       imgAI.src = "../picture/storyPicContainer3.png";
     } else imgAI.src = localStorage.getItem(`${pageName.innerText}_Image`);
 
+    // 顯示文字以及文字input的value
     if (
       localStorage.getItem(`${pageName.innerText}_Text`) == null ||
       localStorage.getItem(`${pageName.innerText}_Text`) == undefined
     ) {
       Image_text.innerText = "Showing story picture and content soon.";
-    } else
+    } else {
       Image_text.innerText = localStorage.getItem(`${pageName.innerText}_Text`);
+      if (pageName.innerText == "封面封底") {
+        //所填入的書背文產生在故事書旁
+        text.value = localStorage.getItem(`${pageName.innerText}_Text`);
+      } else {
+        //所填入的內文產生在故事書旁
+        TextPrompt.value = localStorage.getItem(`${pageName.innerText}_Text`);
+      }
+    }
+
+    //當點擊的是封面時故事書書名
+    if (pageName.innerText == "封面封底") {
+      if (
+        localStorage.getItem(`Book_Title`) == null ||
+        localStorage.getItem(`Book_Title`) == undefined
+      ) {
+        bookTitle.hidden = true;
+      } else {
+        bookTitle.hidden = false;
+        bookTitle.innerText = localStorage.getItem(`Book_Title`);
+      }
+    } else {
+      bookTitle.hidden = true;
+    }
+
+    // 右側文字頁顏色
+
+    if (
+      localStorage.getItem(`${pageName.innerText}_Background_color`) == null ||
+      localStorage.getItem(`${pageName.innerText}_Background_color`) ==
+        undefined
+    ) {
+      text_container.style.backgroundColor = "#c0a69d";
+      Image_text.style.color = "#f8f8f8";
+    } else {
+      text_container.style.backgroundColor = localStorage.getItem(
+        `${pageName.innerText}_Background_color`
+      );
+      Image_text.style.color = localStorage.getItem(
+        `${pageName.innerText}_Text_color`
+      );
+    }
 
     imgAI.alt = "";
     changePageInner();
@@ -369,7 +363,7 @@ pageContain.addEventListener("click", (e) => {
 
 const changePageInner = function () {
   console.log(`pagename==${pageName.innerText}`);
-  if (pageName.innerText == "Cover") {
+  if (pageName.innerText == "封面封底") {
     textPrompt_contain.style.display = "none";
     textBgColor.style.display = "none";
     coverColor.style.display = "block";
@@ -401,7 +395,7 @@ addPageButton.onclick = function () {
   //看目前有幾個button，根據button數量來命名現在第幾頁
   const pageBtn = document.querySelectorAll(".page-btn");
   console.log(pageBtn);
-  creat_Pagebtn.innerText = `Page ${pageBtn.length}`;
+  creat_Pagebtn.innerText = `第${pageBtn.length}頁`;
   creat_Pagebtn.className = "page-btn";
 
   //將新增的東西放入父級別
@@ -435,11 +429,112 @@ for (i = 0; i < bg_color.length; i++) {
 
 //reset 按鈕
 
-const reset_btn = document.getElementById("reset-btn");
+// const reset_btn = document.getElementById("reset-btn");
 
-reset_btn.addEventListener("click", () => {
-  document.getElementById("allForm").reset();
-});
+// reset_btn.addEventListener("click", () => {
+//   document.getElementById("allForm").reset();
+// });
 
-//finish 按鈕
-const finish_btn = document.getElementById("finish-btn");
+// 增加角色樣貌
+rollBtn.onclick = function () {
+  //新增roll
+  const creat_role = document.createElement("div");
+  creat_role.setAttribute("class", "roll");
+
+  //看目前有幾個roll，根據roll數量來命名現在第幾頁
+  const roll = document.querySelectorAll(".roll");
+  console.log(roll);
+
+  // 取label名字;
+  const role_label = document.createElement("label");
+  role_label.setAttribute("for", `roll${roll.length + 1}`);
+  role_label.innerText = `角色${roll.length + 1}`;
+
+  // 新增textarea
+  const role_textarea = document.createElement("textarea");
+  role_textarea.setAttribute("id", `roll${roll.length + 1}`);
+
+  //將新增的東西放入父級別
+  document.getElementById("rollStyle").appendChild(creat_role);
+  creat_role.appendChild(role_label);
+  creat_role.appendChild(role_textarea);
+};
+
+// 打開網站立刻取得儲存資料
+function showNow() {
+  //input顯示故事書名稱以及封底文字
+  bookName.value = localStorage.getItem("Book_Title");
+  text.value = localStorage.getItem(" 封面封底_Text");
+
+  // 如果有封面圖片則顯示、如果有封底文字則顯示在圖片上
+  if (
+    localStorage.getItem(`封面封底_Image`) == null ||
+    localStorage.getItem(`封面封底_Image`) == undefined
+  ) {
+    imgAI.src = "../picture/storyPicContainer3.png";
+  } else imgAI.src = localStorage.getItem(`封面封底_Image`);
+
+  if (
+    localStorage.getItem(`封面封底_Text`) == null ||
+    localStorage.getItem(`封面封底_Text`) == undefined
+  ) {
+    Image_text.innerText = "開始製作圖片後，故事標語將顯示在此封底";
+  } else {
+    Image_text.innerText = localStorage.getItem(`封面封底_Text`);
+    text.value = localStorage.getItem(`封面封底_Text`);
+  }
+
+  if (
+    localStorage.getItem(`Book_Title`) == null ||
+    localStorage.getItem(`Book_Title`) == undefined
+  ) {
+    bookTitle.hidden = true;
+  } else {
+    bookTitle.hidden = false;
+    bookTitle.innerText = localStorage.getItem(`Book_Title`);
+  }
+
+  // 右側文字頁
+
+  if (
+    localStorage.getItem(`封面封底_Background_color`) == null ||
+    localStorage.getItem(`封面封底_Background_color`) == undefined
+  ) {
+    text_container.style.backgroundColor = "#c0a69d";
+    Image_text.style.color = "#f8f8f8";
+  } else {
+    text_container.style.backgroundColor = localStorage.getItem(
+      `封面封底_Background_color`
+    );
+    Image_text.style.color = localStorage.getItem(`封面封底_Text_color`);
+  }
+
+  imgAI.alt = "";
+}
+
+showNow();
+pageNum();
+// 一開始顯示頁數
+function pageNum() {
+  console.log("pageNumu有跑");
+  for (i = 3; i <= 40; i++) {
+    if (
+      localStorage.getItem(`第${i}頁_Text`) == null ||
+      localStorage.getItem(`第${i}頁_Text`) == undefined
+    ) {
+      break;
+    } else {
+      //新增button
+      const creat_Pagebtn = document.createElement("button");
+
+      //看目前有幾個button，根據button數量來命名現在第幾頁
+      const pageBtn = document.querySelectorAll(".page-btn");
+      console.log(pageBtn);
+      creat_Pagebtn.innerText = `第${pageBtn.length}頁`;
+      creat_Pagebtn.className = "page-btn";
+
+      //將新增的東西放入父級別
+      pageContain.appendChild(creat_Pagebtn);
+    }
+  }
+}
