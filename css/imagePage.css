@@ -208,9 +208,9 @@ body {
   width: 80%;
 }
 
-#colorSelect {
+/* #colorSelect {
   margin-top: 50px;
-}
+} */
 
 #pageName {
   font-size: 50px;
@@ -226,6 +226,72 @@ textarea {
   border-radius: 3px;
 }
 
+/* 
+顏色位置挑選設定區域 */
+#visualEditing {
+  display: flex;
+  flex-direction: row;
+  width: 842px;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+#visualEditing label {
+  color: #485f70;
+  font-size: 18px;
+  font-weight: 550;
+  margin-right: 8px;
+  font-family: Inter, sans-serif;
+}
+#bookNameCss,
+#backCoverCss {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#bookNameCss input {
+  margin-right: 20px;
+}
+
+#bookNameCss button {
+  margin-right: 9px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(209, 209, 209);
+  outline: none;
+  padding: 2.3px;
+  color: #485f70;
+  border-radius: 10px;
+}
+
+#bookNameCss button:active {
+  background-color: #da9466;
+  color: #ededed;
+}
+
+#backCoverCss label {
+  margin-left: 20px;
+}
+
+#textSize {
+  width: 43px;
+  padding: 5px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(209, 209, 209);
+  outline: none;
+  color: #485f70;
+}
+
+#textSize:focus {
+  border: 2px solid #a9a9a9;
+}
+
+.colorChang {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #a9a9a9;
+  outline: none;
+}
+
 /* --------------------------------- */
 
 /* storybook-content */
@@ -238,7 +304,7 @@ textarea {
   width: 421px;
   height: 421px;
   background: #ecc768;
-
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -253,7 +319,9 @@ textarea {
 
 #bookTitle {
   position: absolute;
-  top: 40%;
+  top: 6%;
+  left: 25%;
+
   font-family: "Noto Sans TC", sans-serif;
   font-size: 23px;
   z-index: 2;
@@ -280,7 +348,7 @@ textarea {
   font-family: Inter, sans-serif;
 }
 
-#coverColor {
+/* #coverColor {
   display: flex;
   text-align: center;
 }
@@ -290,9 +358,9 @@ textarea {
   font-weight: 550;
   margin-bottom: 30px;
   color: #485f70;
-}
+} */
 
-#textBgColor {
+/* #textBgColor {
   display: flex;
   text-align: center;
 }
@@ -302,20 +370,20 @@ textarea {
   font-weight: 550;
   margin-bottom: 30px;
   color: #485f70;
-}
+} */
 
 #bgColor {
   margin-top: 5px;
 }
 
-.bg_color {
+/* .bg_color {
   border-color: #ffffff;
   background-color: #ffffff;
   border-radius: 8px;
   width: 80px;
   height: 40px;
   font-size: 20px;
-}
+} */
 
 /* --------------------------------- */
 
@@ -351,10 +419,6 @@ textarea {
   border: 2px solid #a9a9a9;
 }
 
-#bookName_contain {
-  margin-right: 5px;
-}
-
 #textPrompt_contain {
   text-align: center;
   width: 100%;
@@ -368,6 +432,7 @@ textarea {
   border: 0px;
   border: 1px solid #d1d1d1;
   outline: none;
+  color: #485f70;
 }
 
 #textPrompt_contain textarea:focus {

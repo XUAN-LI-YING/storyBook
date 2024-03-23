@@ -83,181 +83,44 @@
           </div>
 
           <!-- cover顏色 -->
-          <div id="colorSelect">
-            <div id="coverColor">
-              <p>封底顏色</p>
-              <button
-                type="button"
-                id="red"
-                class="bg_color"
-                data-background="#AE3535"
-                data-text="#FFFFFF"
-              >
-                Red
-              </button>
+          <div id="visualEditing">
+            <div id="bookNameCss">
+              <!-- <p>書名</p> -->
 
-              <button
-                type="button"
-                id="orange"
-                class="bg_color"
-                data-background="#D98244"
-                data-text="#FFFFFF"
-              >
-                Orange
-              </button>
+              <label for="colorWell">書名顏色</label>
+              <input
+                type="color"
+                value="#ff0000"
+                id="colorWell"
+                class="colorChang"
+              />
 
-              <button
-                type="button"
-                id="yellow"
-                class="bg_color"
-                data-background="#FFF500"
-                data-text="#0B0508"
-              >
-                Yellow
-              </button>
+              <label for="textSize">文字大小</label>
+              <input type="number" id="textSize" value="23" />
 
-              <button
-                type="button"
-                id="green"
-                class="bg_color"
-                data-background="#3C5431"
-                data-text="#FFFFFF"
-              >
-                Green
-              </button>
-
-              <button
-                type="button"
-                id="white"
-                class="bg_color"
-                data-background="#FFFFFF"
-                data-text="#0B0508"
-              >
-                White
-              </button>
-
-              <button
-                type="button"
-                id="blue"
-                class="bg_color"
-                data-background="#305F97"
-                data-text="#FFFFFF"
-              >
-                Blue
-              </button>
-
-              <button
-                type="button"
-                id="purple"
-                class="bg_color"
-                data-background="#644C8C"
-                data-text="#FFFFFF"
-              >
-                Purple
-              </button>
-
-              <button
-                type="button"
-                id="pink"
-                class="bg_color"
-                data-background="#9A5E7B"
-                data-text="#FFFFFF"
-              >
-                Pink
-              </button>
-
-              <button
-                type="button"
-                id="black"
-                class="bg_color"
-                data-background="#0B0508"
-                data-text="#FFFFFF"
-              >
-                Black
-              </button>
+              <label>位置</label>
+              <button onclick="moveText('left')">左移</button>
+              <button onclick="moveText('right')">右移</button>
+              <button onclick="moveText('up')">上移</button>
+              <button onclick="moveText('down')">下移</button>
             </div>
 
-            <div id="textBgColor">
-              <p>文字頁顏色</p>
-              <button
-                type="button"
-                id="red"
-                class="bg_color"
-                data-background="#DE9D9D"
-                data-text="#0B0508"
-              >
-                Red
-              </button>
+            <div id="backCoverCss">
+              <label for="colorWell">封底背景顏色</label>
+              <input
+                type="color"
+                value="#ff0000"
+                id="colorWell2"
+                class="colorChang"
+              />
 
-              <button
-                type="button"
-                id="orange"
-                class="bg_color"
-                data-background="#E3BB9D"
-                data-text="#0B0508"
-              >
-                Orange
-              </button>
-
-              <button
-                type="button"
-                id="yellow"
-                class="bg_color"
-                data-background="#fff88e"
-                data-text="#0B0508"
-              >
-                Yellow
-              </button>
-
-              <button
-                type="button"
-                id="green"
-                class="bg_color"
-                data-background="#A6DCBB"
-                data-text="#0B0508"
-              >
-                Green
-              </button>
-
-              <button
-                type="button"
-                id="white"
-                class="bg_color"
-                data-background="#FFFFFF"
-                data-text="#0B0508"
-              >
-                White
-              </button>
-
-              <button
-                type="button"
-                id="blue"
-                class="bg_color"
-                data-background="#A8D0FF"
-                data-text="#0B0508"
-              >
-                Blue
-              </button>
-
-              <button
-                type="button"
-                id="purple"
-                class="bg_color"
-                data-background="#CEBEE7"
-                data-text="#0B0508"
-              >
-                Purple
-              </button>
-
-              <button
-                type="button"
-                id="pink"
-                class="bg_color"
-                data-background="#DEBCCC"
-                data-text="#0B0508"
-              >
-                Pink
-              </button>
+              <label for="colorWell">文字顏色</label>
+              <input
+                type="color"
+                value="#ff0000"
+                id="colorWell3"
+                class="colorChang"
+              />
             </div>
           </div>
 
@@ -460,12 +323,7 @@
 
                 <div class="style_input" id="else">
                   <label for="elseStyle">其他：</label>
-                  <input
-                    type="text"
-                    id="elseStyle"
-                    
-                    value=""
-                  />
+                  <input type="text" id="elseStyle" value="" />
                 </div>
               </div>
             </div>

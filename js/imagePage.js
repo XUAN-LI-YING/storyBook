@@ -270,8 +270,8 @@ const page_scroll = document.getElementById("page_scroll");
 const bookName_contain = document.getElementById("bookName_contain");
 const backCover_contain = document.getElementById("backCover_contain");
 const textPrompt_contain = document.getElementById("textPrompt_contain");
-const coverColor = document.getElementById("coverColor");
-const textBgColor = document.getElementById("textBgColor");
+// const coverColor = document.getElementById("coverColor");
+// const textBgColor = document.getElementById("textBgColor");
 const text_container = document.getElementById("text-container");
 
 //當按相同CLASS按鈕
@@ -305,6 +305,7 @@ pageContain.addEventListener("click", (e) => {
       localStorage.getItem(`${pageName.innerText}_Text`) == undefined
     ) {
       Image_text.innerText = "Showing story picture and content soon.";
+      TextPrompt.value = "";
     } else {
       Image_text.innerText = localStorage.getItem(`${pageName.innerText}_Text`);
       if (pageName.innerText == "封面封底") {
@@ -360,24 +361,30 @@ pageContain.addEventListener("click", (e) => {
 });
 
 //更換頁面部分內容不同要隱藏以及顯示(在沒有切換btn的情況)
-
+const bookNameCss = document.getElementById("bookNameCss");
+const visualEditing = document.getElementById("visualEditing");
 const changePageInner = function () {
   console.log(`pagename==${pageName.innerText}`);
   if (pageName.innerText == "封面封底") {
     textPrompt_contain.style.display = "none";
-    textBgColor.style.display = "none";
-    coverColor.style.display = "block";
+    // textBgColor.style.display = "none";
+    // coverColor.style.display = "block";
     bookName_contain.style.display = "block";
     backCover_contain.style.display = "block";
     text_container.style.alignItems = "end";
     Image_text.style.paddingBottom = "20px";
+    bookNameCss.style.display = "flex";
+    visualEditing.style.justifyContent = "space-between";
     console.log("cover");
   } else {
     textPrompt_contain.style.display = "block";
-    textBgColor.style.display = "block";
+    // textBgColor.style.display = "block";
     bookName_contain.style.display = "none";
     backCover_contain.style.display = "none";
-    coverColor.style.display = "none";
+    bookNameCss.style.display = "none";
+    visualEditing.style.justifyContent = "flex-end";
+
+    // coverColor.style.display = "none";
     text_container.style.alignItems = "center";
     Image_text.style.paddingBottom = "0px";
     console.log("any");
@@ -402,30 +409,30 @@ addPageButton.onclick = function () {
   pageContain.appendChild(creat_Pagebtn);
 };
 
-//更換背景顏色
+// //更換背景顏色
 
-const bg_color = document.getElementsByClassName("bg_color");
-const colorSelect = document.getElementById("colorSelect");
-const image_text = document.getElementById("image_text");
+// const bg_color = document.getElementsByClassName("bg_color");
+// const colorSelect = document.getElementById("colorSelect");
+// const image_text = document.getElementById("image_text");
 
-colorSelect.addEventListener("click", (e) => {
-  //並不是父級別裡的所有CSS感應到，而是僅限於class="bg_color"
-  if (e.target.classList.contains("bg_color")) {
-    const container_color = e.target.getAttribute("data-background");
-    const container_text = e.target.getAttribute("data-text");
+// colorSelect.addEventListener("click", (e) => {
+//   //並不是父級別裡的所有CSS感應到，而是僅限於class="bg_color"
+//   if (e.target.classList.contains("bg_color")) {
+//     const container_color = e.target.getAttribute("data-background");
+//     const container_text = e.target.getAttribute("data-text");
 
-    text_container.style.background = container_color;
-    image_text.style.color = container_text;
-  }
-});
+//     text_container.style.background = container_color;
+//     image_text.style.color = container_text;
+//   }
+// });
 
-//更換背景顏色之選項btn顏色
-console.log(bg_color);
-for (i = 0; i < bg_color.length; i++) {
-  bg_color[i].style.backgroundColor =
-    bg_color[i].getAttribute("data-background");
-  bg_color[i].style.color = bg_color[i].getAttribute("data-text");
-}
+// //更換背景顏色之選項btn顏色
+// console.log(bg_color);
+// for (i = 0; i < bg_color.length; i++) {
+//   bg_color[i].style.backgroundColor =
+//     bg_color[i].getAttribute("data-background");
+//   bg_color[i].style.color = bg_color[i].getAttribute("data-text");
+// }
 
 //reset 按鈕
 
@@ -434,6 +441,59 @@ for (i = 0; i < bg_color.length; i++) {
 // reset_btn.addEventListener("click", () => {
 //   document.getElementById("allForm").reset();
 // });
+
+// //更換背景顏色、文字顏色、標題位置
+const colorWell = document.getElementById("colorWell");
+const textSize = document.getElementById("textSize");
+const colorWell2 = document.getElementById("colorWell2");
+const colorWell3 = document.getElementById("colorWell3");
+
+//當調色盤轉動時即時更新顏色
+colorWell.addEventListener("input", function () {
+  bookTitle.style.color = colorWell.value;
+});
+
+colorWell2.addEventListener("input", function () {
+  text_container.style.backgroundColor = colorWell2.value;
+});
+
+colorWell3.addEventListener("input", function () {
+  Image_text.style.color = colorWell3.value;
+});
+
+//書名文字大小
+textSize.addEventListener("input", function () {
+  bookTitle.style.fontSize = textSize.value + "px";
+});
+
+//書名位置移動
+function moveText(direction) {
+  const step = 5; // 每次移动的像素
+  let left = window.getComputedStyle(bookTitle).left.replace("px", "");
+  let top = window.getComputedStyle(bookTitle).top.replace("px", "");
+
+  // console.log(bookTitle.style.color);
+  console.log(window.getComputedStyle(bookTitle).left);
+  switch (direction) {
+    case "left":
+      console.log(left);
+      console.log(step);
+      bookTitle.style.left = `${parseInt(left) - step}px`;
+      console.log(bookTitle.style.left);
+      console.log(`${left - step}%`);
+
+      break;
+    case "right":
+      bookTitle.style.left = `${parseInt(left) + step}px`;
+      break;
+    case "up":
+      bookTitle.style.top = `${parseInt(top) - step}px`;
+      break;
+    case "down":
+      bookTitle.style.top = `${parseInt(top) + step}px`;
+      break;
+  }
+}
 
 // 增加角色樣貌
 rollBtn.onclick = function () {

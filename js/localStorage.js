@@ -163,5 +163,18 @@ document.getElementById("finish-btn").onclick = function () {
     window.getComputedStyle(image_text, null).getPropertyValue("color")
   );
 
+  //儲存書名樣式
+  const bookName_color = `Book_Title_color`;
+  localStorage.setItem(bookName_color, bookTitle.style.color);
+
+  const bookName_size = `Book_Title_size`;
+  localStorage.setItem(bookName_size, bookTitle.style.fontSize);
+
+  const bookName_left = `Book_Title_left`;
+  localStorage.setItem(bookName_left, bookTitle.style.left);
+
+  const bookName_top = `Book_Title_top`;
+  localStorage.setItem(bookName_top, bookTitle.style.top);
+
   location.href = "../html/finish.html";
 };

@@ -33,6 +33,11 @@ function getItem() {
   const text = localStorage.getItem("封面封底_Text");
   // 提取書名
   const bookName = localStorage.getItem("Book_Title");
+  // 提取書名樣式
+  const bookName_top = localStorage.getItem("Book_Title_top");
+  const bookName_left = localStorage.getItem("Book_Title_left");
+  const bookName_color = localStorage.getItem("Book_Title_color");
+  const bookName_size = localStorage.getItem("Book_Title_size");
 
   console.log(textBgColor);
   console.log(textColor);
@@ -41,6 +46,10 @@ function getItem() {
   cover_text.style.color = textColor;
   cover_text.innerText = text;
   bookTitle.innerText = bookName;
+  bookTitle.style.color = bookName_color;
+  bookTitle.style.fontSize = bookName_size;
+  bookTitle.style.left = bookName_left;
+  bookTitle.style.top = bookName_top;
 
   // ---------------------------------------------
   // 取出內頁資料
