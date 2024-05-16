@@ -321,7 +321,7 @@ textarea {
   position: absolute;
   top: 6%;
   left: 25%;
-
+  text-shadow: 0.5px 0.5px 1px white;
   font-family: "Noto Sans TC", sans-serif;
   font-size: 23px;
   z-index: 2;

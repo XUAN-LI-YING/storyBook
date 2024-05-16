@@ -17,6 +17,8 @@ const bookTitle = document.getElementById("bookTitle");
 const rollBtn = document.getElementById("rollBtn");
 // 故事書名稱
 const bookName = document.getElementById("bookName");
+//抓取現在頁面位置用來了解要抓取哪個文字value是封底的還是文字內頁
+const pageName = document.getElementById("pageName");
 
 // 書名一開始影藏，產出圖片後才顯示title
 
@@ -42,8 +44,7 @@ startButton.onclick = function () {
 
   //抓取使用者所填寫資料
   //抓取故事文字
-  //抓取現在頁面位置用來了解要抓取哪個文字value是封底的還是文字內頁
-  const pageName = document.getElementById("pageName");
+
   const PromptValue = TextPrompt.value;
   const textValue = text.value;
 
@@ -448,22 +449,32 @@ const textSize = document.getElementById("textSize");
 const colorWell2 = document.getElementById("colorWell2");
 const colorWell3 = document.getElementById("colorWell3");
 
-//當調色盤轉動時即時更新顏色
+//當調色盤轉動時即時更新顏色，並且儲存
 colorWell.addEventListener("input", function () {
   bookTitle.style.color = colorWell.value;
+  localStorage.setItem("Book_Title_color", bookTitle.style.color);
 });
 
 colorWell2.addEventListener("input", function () {
   text_container.style.backgroundColor = colorWell2.value;
+  localStorage.setItem(
+    `${pageName.innerText}_Background_color`,
+    text_container.style.backgroundColor
+  );
 });
 
 colorWell3.addEventListener("input", function () {
   Image_text.style.color = colorWell3.value;
+  localStorage.setItem(
+    `${pageName.innerText}_Text_color`,
+    text_container.style.backgroundColor
+  );
 });
 
 //書名文字大小
 textSize.addEventListener("input", function () {
   bookTitle.style.fontSize = textSize.value + "px";
+  localStorage.setItem(`Book_Title_size`, bookTitle.style.fontSize);
 });
 
 //書名位置移動
@@ -481,16 +492,23 @@ function moveText(direction) {
       bookTitle.style.left = `${parseInt(left) - step}px`;
       console.log(bookTitle.style.left);
       console.log(`${left - step}%`);
+      localStorage.setItem(`Book_Title_left`, left);
 
       break;
     case "right":
       bookTitle.style.left = `${parseInt(left) + step}px`;
+      localStorage.setItem(`Book_Title_left`, left);
+
       break;
     case "up":
       bookTitle.style.top = `${parseInt(top) - step}px`;
+      localStorage.setItem(`Book_Title_top`, top);
+
       break;
     case "down":
       bookTitle.style.top = `${parseInt(top) + step}px`;
+      localStorage.setItem(`Book_Title_top`, top);
+
       break;
   }
 }

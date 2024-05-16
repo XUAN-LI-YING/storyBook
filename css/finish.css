@@ -28,6 +28,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 #cover_image {
@@ -40,6 +41,7 @@ html {
   top: 50px;
   font-family: "Noto Sans TC", sans-serif;
   font-size: 30px;
+  max-width: 480px;
 }
 
 #CoverText {
@@ -94,4 +96,12 @@ html {
   padding: 16px;
   text-align: center;
   font-size: 16pt;
+}
+
+#bookTitle {
+  position: absolute;
+  text-shadow: -1px 1px 1px white;
+  font-family: "Noto Sans TC", sans-serif;
+  /* font-size: 23px; */
+  z-index: 2;
 }

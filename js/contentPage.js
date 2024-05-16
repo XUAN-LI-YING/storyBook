@@ -17,7 +17,9 @@ function create() {
 
   //   生成故事
   const data = {
-    model: "gpt-4-0125-preview",
+    // model: "gpt-4-0125-preview",
+    model: "gpt-4o",
+
     messages: [
       {
         role: "system",
