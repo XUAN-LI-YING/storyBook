@@ -318,7 +318,7 @@ pageContain.addEventListener("click", (e) => {
       }
     }
 
-    //當點擊的是封面時故事書書名
+    //當點擊換頁時的是封面時故事書書名
     if (pageName.innerText == "封面封底") {
       if (
         localStorage.getItem(`Book_Title`) == null ||
@@ -467,7 +467,7 @@ colorWell3.addEventListener("input", function () {
   Image_text.style.color = colorWell3.value;
   localStorage.setItem(
     `${pageName.innerText}_Text_color`,
-    text_container.style.backgroundColor
+    Image_text.style.color
   );
 });
 
@@ -570,6 +570,10 @@ function showNow() {
   } else {
     bookTitle.hidden = false;
     bookTitle.innerText = localStorage.getItem(`Book_Title`);
+    bookTitle.style.color = localStorage.getItem(`Book_Title_color`);
+    bookTitle.style.fontSize = localStorage.getItem(`Book_Title_size`);
+    bookTitle.style.left = localStorage.getItem(`Book_Title_left`);
+    bookTitle.style.top = localStorage.getItem(`Book_Title_top`);
   }
 
   // 右側文字頁
